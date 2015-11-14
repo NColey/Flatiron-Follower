@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   #profile page
   get 'students/:id' => 'students#show', as: :student_profile
+
+  resources :cohorts
   
 
 end

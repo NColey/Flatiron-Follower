@@ -1,5 +1,38 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
+
+  root to: 'welcome#index'
+
+  #login
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  #signup
+  get '/signup' => 'students#new'
+
+  #profile page
+  get 'students/:id' => 'students#show', as: :student_profile
+  
+
+end
+
+# Prefix Verb   URI Pattern                  Controller#Action
+#     students GET    /students(.:format)          students#index
+#              POST   /students(.:format)          students#create
+#  new_student GET    /students/new(.:format)      students#new
+# edit_student GET    /students/:id/edit(.:format) students#edit
+#      student GET    /students/:id(.:format)      students#show
+#              PATCH  /students/:id(.:format)      students#update
+#              PUT    /students/:id(.:format)      students#update
+#              DELETE /students/:id(.:format)      students#destroy
+#         root GET    /                            welcome#index
+#        login GET    /login(.:format)             sessions#new
+#              POST   /login(.:format)             sessions#create
+#       logout GET    /logout(.:format)            sessions#destroy
+#       signup GET    /signup(.:format)            students#new
+
+
+ # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
@@ -53,4 +86,3 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end

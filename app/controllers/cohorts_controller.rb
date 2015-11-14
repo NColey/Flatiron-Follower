@@ -28,11 +28,13 @@ class CohortsController < ApplicationController
   def update
     @cohort = Cohort.find(params[:id])
     @cohort.update(cohort_params)
+    redirect_to @cohort
   end
 
   def destroy
     @cohort = Cohort.find(params[:id])
     @cohort.destroy
+    redirect_to cohorts_path
   end
 
   private

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   #signup
-  get '/signup' => 'students#new'
+  get '/signup' => 'students#new', as: :signup
 
   #profile page
   get 'students/:id' => 'students#show', as: :student_profile

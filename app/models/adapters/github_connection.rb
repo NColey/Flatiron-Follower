@@ -8,14 +8,14 @@ module Adapters
       @connection = self.class
     end
 
-    def follow(token, array)
-      array.each do |username|
+    def follow(token, cohort_id)
+      students = Student.where(cohort_id: cohort_id)
+      students.each do |student|
+        username = student.github_handle 
         connection.put("https://api.github.com/user/following/#{username}?access_token=#{token}", :body =>{})
-      end
-      #retrieve the access token from database. 
-      #iterate over list of github usernames
-
+      end     
     end
+
   end
 
 end

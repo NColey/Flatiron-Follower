@@ -31,6 +31,9 @@ gem 'omniauth-github'
 gem 'figaro'
 gem 'pry-byebug'
 
+#to encrypt attributes
+gem 'attr_encrypted'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 

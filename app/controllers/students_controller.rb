@@ -6,6 +6,7 @@ class StudentsController < ApplicationController
   def connect
     student = Student.find_by(id:session[:student_id])
     student.update(auth_hash["provider"]=>auth_hash["credentials"]["token"])
+    
   end
 
 private 

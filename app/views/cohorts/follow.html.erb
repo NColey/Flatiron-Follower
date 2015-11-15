@@ -1,0 +1,7 @@
+<h2>Follow Your Classmates on <%= @provider %></h2>
+
+<ul>
+  <% @cohorts.each do |cohort| %>
+    <li><%= cohort.name %> | <%= link_to "Follow All", follow_cohort_path(cohort, @provider), method: :put %></li>
+  <% end %>
+</ul>

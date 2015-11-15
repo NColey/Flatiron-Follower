@@ -43,7 +43,6 @@ class Scraper
 		    linkedin = profile_doc.search('.social-icons a')[1].attr('href') #return to this
 		    Student.create(name: name, twitter_handle: twitter, github_handle: github, linkedin_url: linkedin)
 		end
-		#there are a couple people without correct names.
 	end
 
 	# def hash_twitter

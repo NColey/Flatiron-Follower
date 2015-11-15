@@ -7,7 +7,7 @@
 <div class="field">
   <p>Select your name</p>
   <%= f.label :name %>
-  <%= collection_select :cohort, :students, Student.all, :id, :name %>
+  <%= collection_select :student, :id, Student.all, :id, :name %>
 </div>
  <br><br>
 <div class="field">

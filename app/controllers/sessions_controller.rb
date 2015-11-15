@@ -15,9 +15,19 @@ class SessionsController < ApplicationController
 		end
 	end
 
+	def update
+		student = session[:student_id]
+		params[:provider] = auth_hash.token
+	end
+
 	def destroy
 		log_out
 		redirect_to root_url
+	end
+
+	private 
+	def auth_hash
+		request.env['omniauth.auth']
 	end
 
 end

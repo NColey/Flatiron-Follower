@@ -13,13 +13,17 @@ Rails.application.routes.draw do
   #profile page
   get 'students/:id' => 'students#show', as: :student_profile
 
+  #follow cohorts
+  get '/cohorts/follow/:provider' => 'cohorts#follow'
+  put '/cohorts/:id/follow/:provider' => 'cohorts#follow_cohort', as: :follow_cohort 
+
   #cohorts crud
   resources :cohorts
  
   #log in with github
   get '/login/github', to: redirect('/auth/github')
+  get '/auth/github/callback' => "students#connect"
 
-  get '/auth/github/callback' => "students#connect" 
 
 end
 

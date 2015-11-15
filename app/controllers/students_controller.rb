@@ -4,6 +4,7 @@ class StudentsController < ApplicationController
 	end
 
   def connect
+    binding.pry
     @student = Student.find_by(id:session[:student_id])
     @student.update(auth_hash["provider"]=>auth_hash["credentials"]["token"])
     redirect_to student_profile_path(@student)

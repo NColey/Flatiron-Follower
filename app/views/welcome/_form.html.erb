@@ -1,0 +1,18 @@
+<%= form_for :student do |f| %>
+
+  <div class="field">
+    <p>Select your cohort</p>
+    <%= f.label :cohort %>
+    <%= collection_select :student, :cohort_id, Cohort.all, :id, :name%>
+  </div>
+  <div class="field">
+    <p>Select your name</p>
+    <%= f.label :name %>
+    <%= collection_select :student, :id, Student.all, :id, :name %>
+  </div>
+  <br><br>
+
+  <div class="actions">
+    <%= f.submit "Sign Up"%>
+  </div>
+<% end %>

@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
 
+  resources :students, :except => [:show]
+  resources :welcome, :except => [:index, :create]
+
   root to: 'welcome#index'
+  post '/' => 'welcome#create'
 
   #login
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-
-  #signup
-  get '/signup' => 'students#new', as: :signup
 
   #profile page
   get 'students/:id' => 'students#show', as: :student_profile

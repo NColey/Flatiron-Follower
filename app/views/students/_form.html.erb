@@ -1,28 +1,32 @@
 <%= form_for(@student) do |f| %>
-  <% if @student.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
-
-      <ul>
-      <% @student.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %><br>
-    <%= f.label :email %><br>
-    <%= f.text_field :email %><br>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %><br>
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %><br>
+    <p>Welcome <%= @student.name %>
+  </div>
 
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email, class: 'form-control' %>
   </div>
+
+   <br>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
+
+  <br>
+
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %><br>
+  </div>
+
+  <br>
+
   <div class="actions">
-    <%= f.submit("Sign Up") %>
+    <%= f.submit "Register"%>
   </div>
+
 <% end %>

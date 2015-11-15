@@ -46,7 +46,6 @@ class CohortsController < ApplicationController
   def follow_cohort
     cohort_id = follow_params[:id]
     provider = follow_params[:provider]
-    student = Student.find(17)
     @student = Student.find_by(id: session[:student_id])
     token = @student.send(provider)
     client = Adapters::GithubConnection.new

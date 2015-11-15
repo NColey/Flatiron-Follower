@@ -27,7 +27,7 @@ class Scraper
 		
 		#cleans out the broken links
 		students_name_array.reject do |link|
-	    link == "#{self.url}students/student_name.html"
+	    link == "#{self.url}students/student_name.html" || link == "#{self.url}students/student_he.html"
 	  end
 
 	  
@@ -39,9 +39,9 @@ class Scraper
 		    profile_doc = Nokogiri::HTML(profile_html)
 		    name = profile_doc.search('.ib_main_header').text
 
-		    twitter = profile_doc.search('.social-icons a')[0].attr('href')[20..-1]
-		    github = profile_doc.search('.social-icons a')[2].attr('href')[19..-1]
-		    linkedin = profile_doc.search('.social-icons a')[1].attr('href') #return to this
+		    twitter = profile_doc.search('.social-icons a')[0].attr('href')[20..-1] if profile_doc.search('.social-icons a')[0]
+		    github = profile_doc.search('.social-icons a')[2].attr('href')[19..-1] if profile_doc.search('.social-icons a')[2]
+		    linkedin = profile_doc.search('.social-icons a')[1].attr('href') if profile_doc.search('.social-icons a')[1]
 		    Student.create(name: name, twitter_handle: twitter, github_handle: github, linkedin_url: linkedin, cohort_id: self.cohort_id)
 		end
 		#there are a couple people without correct names.

@@ -20,4 +20,9 @@ class SessionsController < ApplicationController
 		redirect_to root_url
 	end
 
+	def destroy_twitter
+		twitter_log_out
+		redirect_to student_profile_path(current_student)
+	end
+
 end

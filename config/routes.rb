@@ -13,6 +13,11 @@ Rails.application.routes.draw do
 
   #profile page
   get 'students/:id' => 'students#show', as: :student_profile
+
+  #log in with twitter
+  get '/login/twitter', to: redirect('/auth/twitter'), as: :twitter_login
+  get '/auth/twitter/callback' => "students#twitter_connect"
+  get '/logout/twitter' => 'sessions#destroy_twitter', as: :twitter_log_out
   
 
 end

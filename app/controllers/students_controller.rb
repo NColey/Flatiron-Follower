@@ -14,10 +14,20 @@ class StudentsController < ApplicationController
 		end
 	end
 
+	def twitter_connect
+		@student = current_student
+		@student.update(provider: auth_hash.provider, uid: auth_hash.uid, token: auth_hash.credentials.token, secret: auth_hash.credentials.secret)
+		redirect_to student_profile_path(@student)
+	end
+
 	private
 
 	def student_params
 		params.require(:student).permit(:email, :password, :password_confirmation)
 	end
+
+	def auth_hash
+    	request.env['omniauth.auth']
+    end
 
 end

@@ -1,4 +1,6 @@
-Welcome
-
-Sign Up
-<%= render 'form' %>
+<% if current_student %>
+	Welcome
+<% else %>
+	Sign Up
+	<%= render 'form' %>
+<% end %>

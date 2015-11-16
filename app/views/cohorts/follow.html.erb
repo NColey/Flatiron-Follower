@@ -2,6 +2,6 @@
 
 <ul>
   <% @cohorts.each do |cohort| %>
-    <li><%= cohort.name %> | <%= link_to "Follow All", follow_cohort_path(cohort, @provider), method: :put %></li>
+    <li><%= cohort.name %> | <%= link_to "Follow All", follow_cohort_path(cohort, @provider), class: "follow-all" %> <span class="follow-success">Woohoo! You're now following <%= cohort.name %>!</span></li>
   <% end %>
 </ul>

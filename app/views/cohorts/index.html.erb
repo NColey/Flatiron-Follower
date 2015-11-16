@@ -1,0 +1,7 @@
+<h2>Flatiron Cohorts</h2>
+
+<ul>
+<% @cohorts.each do |cohort| %>
+  <li><a href="<%= cohort.url %>" target="_blank"><%= cohort.name %></a> | <%= link_to "Edit", edit_cohort_path(cohort) %></li>
+<% end %>
+</ul>

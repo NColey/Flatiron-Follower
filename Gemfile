@@ -29,8 +29,11 @@ gem 'awesome_print'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'figaro'
-gem 'pry'
 gem 'omniauth-twitter'
+gem 'pry-byebug'
+
+#to encrypt attributes
+gem 'attr_encrypted'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'

@@ -1,0 +1,7 @@
+<%= form_for @cohort do |f| %>
+  <p><%= f.label :name %></p>
+  <p><%= f.text_field :name, placeholder: "Cohort Name" %></p>
+  <p><%= f.label :url %></p>
+  <p><%= f.text_field :url, size: 80, placeholder: "Cohort student page URL" %></p>
+  <%= f.submit "Add" %>
+<% end %>

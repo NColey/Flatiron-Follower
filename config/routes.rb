@@ -18,7 +18,19 @@ Rails.application.routes.draw do
   get '/login/twitter', to: redirect('/auth/twitter'), as: :twitter_login
   get '/auth/twitter/callback' => "students#twitter_connect"
   get '/logout/twitter' => 'sessions#destroy_twitter', as: :twitter_log_out
+ 
+  #log in with github
+  get '/login/github', to: redirect('/auth/github')
+  get '/auth/github/callback' => "students#github_connect"
   
+
+  #follow cohorts
+  get '/cohorts/follow/:provider' => 'cohorts#follow'
+  put '/cohorts/:id/follow/:provider' => 'cohorts#follow_cohort', as: :follow_cohort 
+
+  #cohorts crud
+  resources :cohorts
+
 
 end
 

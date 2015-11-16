@@ -50,7 +50,7 @@ class CohortsController < ApplicationController
     token = @student.send(provider)
     client = Adapters::GithubConnection.new
     client.follow(token, cohort_id)
-    redirect_to student_profile_path(@student)
+    render json: {:cohort_id => cohort_id}
   end
 
   private

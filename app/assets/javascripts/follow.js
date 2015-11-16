@@ -11,16 +11,17 @@ function followAllListener(){
       method: "PUT",
       url: path,
     })
-      .done(function() {
-        showSuccessMessage();
+      .success(function(data){ 
+        var id = data.cohort_id
+        showSuccessMessage(id);
       });
     })
 }
 
 function hideSuccessMessage(){
-  $(".follow-success").hide();
+  $("span[class*='follow-success']").hide();
 }
 
-function showSuccessMessage(){
-  $(".follow-success").show();
+function showSuccessMessage(id){
+  $(".follow-success-"+id).show();
 }

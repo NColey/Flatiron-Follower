@@ -1,7 +1,27 @@
-Student Profile Page
+<h2>Student Profile Page</h2>
 
-Github
+<h3>Your Social Media Handles</h3>
+Twitter: <%= current_student.twitter_handle %><br>
+Github: <%= current_student.github_handle %><br>
 
-Linkedin
+<%= link_to "Edit Your Profile", edit_student_path(current_student) %>
 
-Twitter <%= link_to 'Log In with Twitter', twitter_login_path %> <%= link_to 'Log Out of Twitter', twitter_log_out_path %>
+<h3>Connect Your Accounts</h3>
+
+<h4>Github</h4>
+<%= link_to 'Log in with Github',  login_github_path %>
+<%= link_to 'Log Out of Github', logout_github_path %>
+
+
+<h4>Twitter</h4>
+<%= link_to 'Log In with Twitter', twitter_login_path %>
+<%= link_to 'Log Out of Twitter', twitter_log_out_path %>
+
+<div class="follow-twitter">
+  <!-- all the classes you can follow -->
+  <!-- after successful login, display options to follow classes -->
+</div>
+
+<div class="follow-github">
+  <!-- all the classes you can follow -->
+</div>

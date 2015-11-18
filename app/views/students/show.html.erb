@@ -9,19 +9,28 @@ Github: <%= current_student.github_handle %><br>
 <h3>Connect Your Accounts</h3>
 
 <h4>Github</h4>
-<%= link_to 'Log in with Github',  login_github_path %>
+<%= link_to 'Log in with Github',  login_github_path, id: "github-connect" %>
 <%= link_to 'Log Out of Github', logout_github_path %>
 
 
 <h4>Twitter</h4>
-<%= link_to 'Log In with Twitter', twitter_login_path %>
+<%= link_to 'Log In with Twitter', twitter_login_path, id: "twitter-connect" %>
 <%= link_to 'Log Out of Twitter', twitter_log_out_path %>
 
+<% if current_student.token %>
 <div class="follow-twitter">
+
   <!-- all the classes you can follow -->
   <!-- after successful login, display options to follow classes -->
 </div>
+<% end %>
 
-<div class="follow-github">
-  <!-- all the classes you can follow -->
-</div>
+<% if current_student.encrypted_github %>
+  <div class="follow-github">
+    <!-- all the classes you can follow -->
+    <h4>Follow on Github</h4>
+    <% @cohorts.each do |cohort| %>
+      <%= render partial: 'follow', locals:{cohort: cohort, provider: "github"} %>
+    <% end %>
+  </div>
+<% end %>

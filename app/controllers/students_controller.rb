@@ -14,6 +14,10 @@ class StudentsController < ApplicationController
 		end
 	end
 
+  def show
+    @cohorts = Cohort.all
+  end
+
 	def twitter_connect
 		@student = current_student
 		@student.update(provider: auth_hash.provider, uid: auth_hash.uid, token: auth_hash.credentials.token, secret: auth_hash.credentials.secret)

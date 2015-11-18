@@ -6,7 +6,7 @@
 
   <div class="field">
     <%= f.label :email %>
-    <%= f.email_field :email, class: 'form-control' %>
+    <%= f.email_field :email, :size => "40", class: 'form-control' %>
   </div>
 
    <br>
@@ -25,8 +25,22 @@
 
   <br>
 
+  <div class="field">
+    <%= f.label :twitter_handle %>
+    <%= f.text_field :twitter_handle, class: 'form-control' %><br>
+  </div>  
+
+  <br>
+
+  <div class="field">
+    <%= f.label :github_handle %>
+    <%= f.text_field :github_handle, class: 'form-control' %><br>
+  </div>  
+
+  <br>
+
   <div class="actions">
-    <%= f.submit "Register"%>
+    <%= f.submit %>
   </div>
 
 <% end %>

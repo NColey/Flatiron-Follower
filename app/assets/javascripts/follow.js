@@ -4,17 +4,9 @@ $(document).ready(function(){
 })
 
 function followAllListener(){
-  $(".follow-all").on("click", function(event){
-    event.preventDefault();
-    var path = $(this).attr("href");
-    $.ajax({
-      method: "PUT",
-      url: path,
-    })
-      .success(function(data){ 
-        var id = data.cohort_id
-        showSuccessMessage(id);
-      });
+  $(".follow-all").on("ajax:success", function(event, data){
+      var id = data.cohort_id
+      showSuccessMessage(id);
     })
 }
 

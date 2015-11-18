@@ -31,6 +31,7 @@ gem 'omniauth-github'
 gem 'figaro'
 gem 'omniauth-twitter'
 gem 'pry-byebug'
+gem 'devise'
 
 #to encrypt attributes
 gem 'attr_encrypted'

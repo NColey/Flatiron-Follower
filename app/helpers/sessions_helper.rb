@@ -5,7 +5,7 @@ module SessionsHelper
 
     def log_out
         @student = Student.find_by(id: session[:student_id])
-        @student.update(provider: nil, uid: nil, token: nil, secret: nil)
+        @student.update(provider: nil, uid: nil, token: nil, secret: nil, github: nil)
         session.delete(:student_id)
         @current_student = nil
     end

@@ -1,7 +1,0 @@
-<h2>Follow Your Classmates on <%= @provider %></h2>
-
-<ul>
-  <% @cohorts.each do |cohort| %>
-    <li><%= cohort.name %> | <%= link_to "Follow All", follow_cohort_path(cohort, @provider), class: "follow-all" %> <span class="follow-success-<%= cohort.id %>">Woohoo! You're now following <%= cohort.name %>!</span></li>
-  <% end %>
-</ul>

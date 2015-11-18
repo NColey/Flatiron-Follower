@@ -14,6 +14,10 @@ class StudentsController < ApplicationController
 		end
 	end
 
+  def show
+    @cohorts = Cohort.all
+  end
+
 	def twitter_connect
 		@student = current_student
 		@student.update(provider: auth_hash.provider, uid: auth_hash.uid, token: auth_hash.credentials.token, secret: auth_hash.credentials.secret)
@@ -24,16 +28,23 @@ class StudentsController < ApplicationController
     @student = current_student
     @student.update(auth_hash["provider"]=>auth_hash["credentials"]["token"])
     redirect_to student_profile_path(@student)
-  end  
+  end 
+
+  def destroy_github
+    @student = current_student
+    @student.github = nil
+    @student.save
+    redirect_to student_profile_path(@student)
+  end 
 
 	private
 
 	def student_params
-		params.require(:student).permit(:email, :password, :password_confirmation)
+		params.require(:student).permit(:email, :password, :password_confirmation, :twitter_handle, :github_handle)
 	end
 
 	def auth_hash
     	request.env['omniauth.auth']
-    end
+  end
 end
 

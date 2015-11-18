@@ -2,6 +2,6 @@
 
 <ul>
 <% @cohorts.each do |cohort| %>
-  <li><a href="<%= cohort.url %>" target="_blank"><%= cohort.name %></a> | <%= link_to "Edit", edit_cohort_path(cohort) %></li>
+  <li><%= link_to cohort.name, cohort_path(cohort) %> | <%= link_to "Edit", edit_cohort_path(cohort) %> | <a href="<%= cohort.url %>" target="_blank">View on Web</a></li> 
 <% end %>
 </ul>

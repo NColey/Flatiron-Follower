@@ -2,6 +2,14 @@
   Hello, <%= current_student.name %>!
   <%= link_to "Log Out", logout_path %>
   <%= link_to "Home", root_url %>
+   <% if current_student.try(:admin?) %>
+   <p>Cohorts Admin Menu</p>
+   <ul>
+    <li><%= link_to "Cohorts", cohorts_path %></li>
+    <li><%= link_to "Add Cohort", new_cohort_path %></li>
+
+   </ul>
+   <% end %>
 <% else %>
   <%= link_to "Log In", login_path %>
 <% end %>

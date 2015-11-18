@@ -22,11 +22,12 @@ Rails.application.routes.draw do
   #log in with github
   get '/login/github', to: redirect('/auth/github')
   get '/auth/github/callback' => "students#github_connect"
+  get '/logout/github' => 'students#destroy_github'
   
 
   #follow cohorts
-  get '/cohorts/follow/:provider' => 'cohorts#follow'
   put '/cohorts/:id/follow/:provider' => 'cohorts#follow_cohort', as: :follow_cohort 
+  delete '/cohorts/:id/unfollow/:provider' => 'cohorts#unfollow_cohort', as: :unfollow_cohort
 
   #cohorts crud
   resources :cohorts

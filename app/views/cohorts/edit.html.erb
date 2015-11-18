@@ -1,2 +1,6 @@
-<h2>Edit a Cohort</h2>
-<%= render 'form' %>
+<% if current_student.try(:admin?) %>
+  <h2>Edit a Cohort</h2>
+  <%= render 'form' %>
+<% else %>
+  <p>Sorry, you don't have access to this page.</p>
+<% end %>

@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   
 
   #follow cohorts
-  get '/cohorts/follow/:provider' => 'cohorts#follow'
   put '/cohorts/:id/follow/:provider' => 'cohorts#follow_cohort', as: :follow_cohort 
   delete '/cohorts/:id/unfollow/:provider' => 'cohorts#unfollow_cohort', as: :unfollow_cohort
 

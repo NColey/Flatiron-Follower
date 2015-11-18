@@ -1,2 +1,6 @@
-<h1>Add a New Cohort</h1>
-<%= render 'form' %>
+<% if current_student.try(:admin?) %>
+  <h1>Add a New Cohort</h1>
+  <%= render 'form' %>
+<% else %>
+  <p>Sorry, you don't have access to this page.</p>
+<% end %>

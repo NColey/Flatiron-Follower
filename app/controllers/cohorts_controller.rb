@@ -37,11 +37,6 @@ class CohortsController < ApplicationController
     redirect_to cohorts_path
   end
 
-  def follow
-    @provider = params[:provider]
-    @cohorts = Cohort.all
-    render "follow"
-  end
 
   def follow_cohort
     cohort_id = follow_params[:id]

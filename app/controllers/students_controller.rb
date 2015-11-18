@@ -40,7 +40,7 @@ class StudentsController < ApplicationController
 	private
 
 	def student_params
-		params.require(:student).permit(:email, :password, :password_confirmation)
+		params.require(:student).permit(:email, :password, :password_confirmation, :twitter_handle, :github_handle)
 	end
 
 	def auth_hash

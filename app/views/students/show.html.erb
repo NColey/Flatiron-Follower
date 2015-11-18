@@ -1,10 +1,12 @@
 <h2>Student Profile Page</h2>
 
 <h3>Your Social Media Handles</h3>
+<div class="student-summary">
 Twitter: <%= current_student.twitter_handle %><br>
 Github: <%= current_student.github_handle %><br>
 
 <%= link_to "Edit Your Profile", edit_student_path(current_student) %>
+</div>
 
 <h3>Connect Your Accounts</h3>
 

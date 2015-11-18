@@ -53,6 +53,16 @@ class CohortsController < ApplicationController
     render json: {:cohort_id => cohort_id}
   end
 
+  def unfollow_cohort
+    cohort_id = follow_params[:id]
+    provider = follow_params[:provider]
+    @student = Student.find_by(id: session[:student_id])
+    token = @student.send(provider)
+    client = Adapters::GithubConnection.new
+    client.unfollow(token, cohort_id)
+    redirect_to current_student
+  end
+
   private
 
 	def cohort_params

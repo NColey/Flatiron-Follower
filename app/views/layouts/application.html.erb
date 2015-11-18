@@ -10,7 +10,7 @@
 
 <%= render '/layouts/header' %>
 
-<%= yield %>
+<%= content_for?(:cohorts) ? yield(:cohorts) : yield %>
 
 </body>
 </html>

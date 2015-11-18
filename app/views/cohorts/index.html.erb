@@ -1,4 +1,3 @@
-<% if current_student.try(:admin?) %>
 <h2>Flatiron Cohorts</h2>
 
 <ul>
@@ -6,6 +5,3 @@
   <li><a href="<%= cohort.url %>" target="_blank"><%= cohort.name %></a> | <%= link_to "Edit", edit_cohort_path(cohort) %></li>
 <% end %>
 </ul>
-<% else %>
-<p>Sorry, you do not have access to this page.</p>
-<% end %>

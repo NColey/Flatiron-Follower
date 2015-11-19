@@ -25,9 +25,13 @@ Rails.application.routes.draw do
   get '/logout/github' => 'students#destroy_github'
   
 
-  #follow cohorts
-  put '/cohorts/:id/follow/:provider' => 'cohorts#follow_cohort', as: :follow_cohort 
-  delete '/cohorts/:id/unfollow/:provider' => 'cohorts#unfollow_cohort', as: :unfollow_cohort
+  #follow cohorts - github
+  put '/cohorts/:id/follow/:provider' => 'cohorts#follow_cohort_github', as: :follow_cohort_github
+  delete '/cohorts/:id/unfollow/:provider' => 'cohorts#unfollow_cohort_github', as: :unfollow_cohort_github
+
+  #follow cohorts -twitter
+  put '/cohorts/:id/follow/:provider' => 'cohorts#follow_cohort_twitter', as: :follow_cohort_twitter
+  delete '/cohorts/:id/unfollow/:provider' => 'cohorts#unfollow_cohort_twitter', as: :unfollow_cohort_twitter
 
   #cohorts crud
   resources :cohorts

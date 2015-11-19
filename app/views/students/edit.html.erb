@@ -1,1 +1,5 @@
-<%= render 'form' %>
+<% if !current_student %>
+	<%= render 'signup_form' %>
+<% else %>
+	<%= render 'edit_form' %>
+<% end %>

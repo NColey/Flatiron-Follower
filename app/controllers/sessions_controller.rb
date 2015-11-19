@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
 
 
 	def destroy
+		twitter_log_out
 		log_out
 		redirect_to root_url
 	end

@@ -38,43 +38,59 @@ class CohortsController < ApplicationController
   end
 
 
-  def follow_cohort_github
+  def follow_cohort
     cohort_id = follow_params[:id]
     provider = follow_params[:provider]
     @student = Student.find_by(id: session[:student_id])
-    token = @student.send(provider)
-    client = Adapters::GithubConnection.new
-    client.follow(token, cohort_id)
+
+    if provider == 'github'
+      token = @student.send(provider)
+      client = Adapters::GithubConnection.new
+      client.follow(token, cohort_id)
+    elsif provider =='twitter'
+      client = Adapters::TwitterConnection.new
+      client.follow(cohort_id)
+    end
+
     render json: {:cohort_id => cohort_id}
   end
 
-  def unfollow_cohort_github
+  def unfollow_cohort
     cohort_id = follow_params[:id]
     provider = follow_params[:provider]
     @student = Student.find_by(id: session[:student_id])
-    token = @student.send(provider)
-    client = Adapters::GithubConnection.new
-    client.unfollow(token, cohort_id)
+
+    if provider == 'github'
+      token = @student.send(provider)
+      client = Adapters::GithubConnection.new
+      client.unfollow(token, cohort_id)
+    elsif provider == 'twitter'
+      @student.token = token
+      @student.secret = secret
+      client = Adapters::TwitterConnection.new
+      client.unfollow(cohort_id, token, secret)
+    end
+    
     redirect_to current_student
   end
 
-  def follow_cohort_twitter
-    cohort_id = follow_params[:id]
-    provder = follow_params[:provder]
-    @student = Student.find_by(id: session[:student_id])
-    client = Adapters::TwitterConnection.new
-    client.follow(cohort_id)
-    render json: {:cohort_id => cohort_id}
-  end
+  # def follow_cohort_twitter
+  #   cohort_id = follow_params[:id]
+  #   provder = follow_params[:provder]
+  #   @student = Student.find_by(id: session[:student_id])
+  #   client = Adapters::TwitterConnection.new
+  #   client.follow(cohort_id)
+  #   render json: {:cohort_id => cohort_id}
+  # end
 
-  def unfollow_cohort_twitter
-    cohort_id = follow_params[:id]
-    provider = follow_params[:provider]
-    @student = Student.find_by(id: session[:student_id])
-    client = Adapters::TwitterConnection.new
-    client.unfollow(cohort_id)
-    redirect_to current_student
-  end
+  # def unfollow_cohort_twitter
+  #   cohort_id = follow_params[:id]
+  #   provider = follow_params[:provider]
+  #   @student = Student.find_by(id: session[:student_id])
+  #   client = Adapters::TwitterConnection.new
+  #   client.unfollow(cohort_id)
+  #   redirect_to current_student
+  # end
 
   private
 

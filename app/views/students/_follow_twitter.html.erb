@@ -1,4 +1,4 @@
 
 <li>
-  <%= cohort.name %> | <%= link_to "Follow All", follow_cohort_twitter_path(cohort, provider), method: :put, remote: true, class: "follow-all" %> | <%= link_to "Unfollow All", unfollow_cohort_twitter_path(cohort, provider), method: :delete %><span class="follow-success-<%= cohort.id %>"> | Woohoo! You're now following <%= cohort.name %>!</span>
+  <%= cohort.name %> | <%= link_to "Follow All", follow_cohort_path(cohort, provider), method: :put, remote: true, class: "follow-all" %> | <%= link_to "Unfollow All", unfollow_cohort_path(cohort, provider), method: :delete %><span class="follow-success-<%= cohort.id %>"> | Woohoo! You're now following <%= cohort.name %>!</span>
 </li>

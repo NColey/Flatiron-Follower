@@ -31,7 +31,7 @@ Github: <%= @student.github_handle %><br>
   </div>
 <% end %>
 
-<% if @student.encrypted_github %>
+<% if logged_in_with_github? %>
   <div class="follow-github">
     <!-- all the classes you can follow -->
     <h4>Follow on Github</h4>

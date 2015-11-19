@@ -27,4 +27,13 @@ module SessionsHelper
         @student.update(provider: nil, uid: nil, token: nil, secret: nil)
     end
 
+    def logged_in_with_github?
+        current_student.github != nil
+    end
+
+    def github_log_out
+        @student = Student.find_by(id: session[:student_id])
+        @student.update(github: nil)
+    end
+
 end

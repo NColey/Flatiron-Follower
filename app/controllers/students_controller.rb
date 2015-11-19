@@ -32,13 +32,6 @@ class StudentsController < ApplicationController
     	redirect_to student_profile_path(@student)
   	end 
 
-  	def destroy_github
-    	@student = current_student
-    	@student.github = nil
-   		@student.save
-    	redirect_to student_profile_path(@student)
-  	end 
-
 	private
 
 	def student_params

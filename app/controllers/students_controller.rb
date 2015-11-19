@@ -22,13 +22,11 @@ class StudentsController < ApplicationController
   	def show
     	@cohorts = Cohort.all
     	@student = Student.find(params[:id])
-  	end
-
-	def twitter_connect
-		@student = current_student
 		@student.update(provider: auth_hash.provider, uid: auth_hash.uid, token: auth_hash.credentials.token, secret: auth_hash.credentials.secret)
+		client = TwitterConnection.new(@student)
+		binding.pry
 		redirect_to student_profile_path(@student)
-	end
+  	end
 
    	def github_connect
     	@student = current_student

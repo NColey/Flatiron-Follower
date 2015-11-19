@@ -1,5 +1,4 @@
-module Adapters
-  class TwitterConnection
+class TwitterConnection
 
     attr_reader :connection 
 
@@ -33,7 +32,5 @@ module Adapters
         client.follow(username)
       end     
     end
-
-  end
 
 end

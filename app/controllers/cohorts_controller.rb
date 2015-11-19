@@ -48,7 +48,7 @@ class CohortsController < ApplicationController
       client = Adapters::GithubConnection.new
       client.follow(token, cohort_id)
     elsif provider =='twitter'
-      client = Adapters::TwitterConnection.new
+      client = Adapters::TwitterConnection.new(@student)
       client.follow(cohort_id)
     end
 
@@ -65,10 +65,8 @@ class CohortsController < ApplicationController
       client = Adapters::GithubConnection.new
       client.unfollow(token, cohort_id)
     elsif provider == 'twitter'
-      @student.token = token
-      @student.secret = secret
-      client = Adapters::TwitterConnection.new
-      client.unfollow(cohort_id, token, secret)
+      client = Adapters::TwitterConnection.new(@student)
+      client.unfollow(cohort_id)
     end
     
     redirect_to current_student

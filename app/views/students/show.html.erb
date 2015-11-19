@@ -3,10 +3,11 @@
 
 <h3>Your Social Media Handles</h3>
 <div class="student-summary">
-Twitter: <%= current_student.twitter_handle %><br>
-Github: <%= current_student.github_handle %><br>
+	
+Twitter: <%= @student.twitter_handle %><br>
+Github: <%= @student.github_handle %><br>
 
-<%= link_to "Edit Your Profile", edit_student_path(current_student) %>
+<%= link_to "Edit Your Profile", edit_student_path(@student) %>
 </div>
 
 <h3>Connect Your Accounts</h3>
@@ -20,20 +21,22 @@ Github: <%= current_student.github_handle %><br>
 <%= link_to 'Log In with Twitter', twitter_login_path, id: "twitter-connect" %>
 <%= link_to 'Log Out of Twitter', twitter_log_out_path %>
 
-<% if current_student.token %>
-<div class="follow-twitter">
-
-  <!-- all the classes you can follow -->
-  <!-- after successful login, display options to follow classes -->
-</div>
+<% if logged_in_with_twitter? %>
+  <div class="follow-twitter">
+    <!-- all the classes you can follow -->
+    <h4>Follow on Twitter</h4>
+    <% @cohorts.each do |cohort| %>
+      <%= render partial: 'follow_twitter', locals:{cohort: cohort, provider: "twitter"} %>
+    <% end %>
+  </div>
 <% end %>
 
-<% if current_student.encrypted_github %>
+<% if logged_in_with_github? %>
   <div class="follow-github">
     <!-- all the classes you can follow -->
     <h4>Follow on Github</h4>
     <% @cohorts.each do |cohort| %>
-      <%= render partial: 'follow', locals:{cohort: cohort, provider: "github"} %>
+      <%= render partial: 'follow_github', locals:{cohort: cohort, provider: "github"} %>
     <% end %>
   </div>
 <% end %>

@@ -6,6 +6,10 @@ class StudentsController < ApplicationController
 
 	def update
 		@student = Student.find(params[:id])
+		if @student.password != nil
+			flash.now.alert = "Sorry this user already has an account!"
+		end
+		
 		if @student.update_attributes(student_params)
 			log_in(@student)
 			redirect_to @student

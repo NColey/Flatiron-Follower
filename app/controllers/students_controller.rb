@@ -7,6 +7,7 @@ class StudentsController < ApplicationController
 	def update
 		@student = Student.find(params[:id])
 		if @student.update_attributes(student_params)
+			log_in(@student)
 			redirect_to @student
 		else
 			flash.now.alert = "Sorry, we could not sign you up!"
@@ -14,9 +15,10 @@ class StudentsController < ApplicationController
 		end
 	end
 
-  def show
-    @cohorts = Cohort.all
-  end
+  	def show
+    	@cohorts = Cohort.all
+    	@student = Student.find(params[:id])
+  	end
 
 	def twitter_connect
 		@student = current_student
@@ -24,18 +26,18 @@ class StudentsController < ApplicationController
 		redirect_to student_profile_path(@student)
 	end
 
-  def github_connect
-    @student = current_student
-    @student.update(auth_hash["provider"]=>auth_hash["credentials"]["token"])
-    redirect_to student_profile_path(@student)
-  end 
+   	def github_connect
+    	@student = current_student
+    	@student.update(auth_hash["provider"]=>auth_hash["credentials"]["token"])
+    	redirect_to student_profile_path(@student)
+  	end 
 
-  def destroy_github
-    @student = current_student
-    @student.github = nil
-    @student.save
-    redirect_to student_profile_path(@student)
-  end 
+  	def destroy_github
+    	@student = current_student
+    	@student.github = nil
+   		@student.save
+    	redirect_to student_profile_path(@student)
+  	end 
 
 	private
 
@@ -45,6 +47,6 @@ class StudentsController < ApplicationController
 
 	def auth_hash
     	request.env['omniauth.auth']
-  end
+  	end
 end
 

@@ -15,9 +15,9 @@ class SessionsController < ApplicationController
 		end
 	end
 
-
 	def destroy
 		twitter_log_out
+		github_log_out
 		log_out
 		redirect_to root_url
 	end
@@ -26,5 +26,10 @@ class SessionsController < ApplicationController
 		twitter_log_out
 		redirect_to student_profile_path(current_student)
 	end
+
+	def destroy_github
+    	github_log_out
+    	redirect_to student_profile_path(@student)
+  	end 
 
 end

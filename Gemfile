@@ -40,6 +40,12 @@ gem 'attr_encrypted'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# twitter bootstrap css & javascript toolkit
+gem 'twitter-bootswatch-rails', '~> 3.3.4'
+
+# twitter bootstrap helpers gem, e.g., alerts etc...
+gem 'twitter-bootswatch-rails-helpers'
+gem 'therubyracer'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

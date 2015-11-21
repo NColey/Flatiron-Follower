@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require flatly
 //= require turbolinks
 //= require follow
-//= require_tree .
+

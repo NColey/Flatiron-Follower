@@ -11,8 +11,8 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+    <% if current_student %>
       <ul class="nav navbar-nav">
-        <% if current_student %>
         <li class="navbar-text">Hello, <%= current_student.name %>!</li>
         <li> <%= link_to "My Profile", student_profile_path(current_student) %></li>
         <% if current_student.try(:admin?) %>
@@ -23,11 +23,11 @@
             <li><%= link_to "Add Cohort", new_cohort_path %></li>
           </ul>
          </li>
-         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Log Out", logout_path %></li>
       </ul>
+    <% end %>
       <% else %>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "Log In", login_path %></li>

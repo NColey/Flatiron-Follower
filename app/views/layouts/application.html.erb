@@ -10,9 +10,10 @@
 </head>
 <body>
 
-<%= render '/layouts/header' %>
+  <%= render '/layouts/header' %>
+  <div class="container">
 
-<%= content_for?(:cohorts) ? yield(:cohorts) : yield %>
-
+    <%= content_for?(:cohorts) ? yield(:cohorts) : yield %>
+  </div>
 </body>
 </html>

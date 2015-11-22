@@ -1,6 +1,17 @@
-<% if current_student %>
-	Welcome
-<% else %>
-	Sign Up
-	<%= render 'form' %>
-<% end %>
+<div class="row">
+    <div class="col-md-4">
+      <h2>Follow your friends, fast.</h2>
+      <p>Follow all your friends at the Flatiron School in one place.</p>
+    </div>
+   <div class="col-md-5 col-md-offset-3">
+      <% if current_student %>
+        <p>Welcome!</p>
+      <% else %>
+        <h3>Sign Up</h3>
+        <%= render 'form' %>
+        <br>
+        <p>Already have an account? <%= link_to "Log in", login_path%></p>
+      <% end %>
+   </div>
+</div>
+

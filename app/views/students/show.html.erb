@@ -1,42 +1,86 @@
-<h2>Student Profile Page</h2>
+<h2><%= current_student.name %>'s Dashboard</h3>
+<br>
+
+<div class="row">
+  <div class="col-md-4">
+    <h3>Your Social Summary</h3>
+
+    <table class="table table-striped table-hover">
+      <tbody>
+        <tr>
+          <td><i class="fa fa-envelope-o"></i></td>
+          <td><%= @student.email %></td>
+        </tr>
+        <tr>
+          <td><i class="fa fa-twitter"></i></td>
+          <td><%= @student.twitter_handle %></td>
+        </tr>
+        <tr>
+          <td><i class="fa fa-github"></i></td>
+          <td><%= @student.github_handle %></td>
+        </tr>
+      </tbody>
+    </table>
+    <%= link_to "Edit Your Profile", edit_student_path(@student) %>
+      
 
 
-<h3>Your Social Media Handles</h3>
-<div class="student-summary">
-	
-Twitter: <%= @student.twitter_handle %><br>
-Github: <%= @student.github_handle %><br>
+  </div>
 
-<%= link_to "Edit Your Profile", edit_student_path(@student) %>
+  <div class="col-md-8">
+
+    <h3>Connect Your Accounts</h4>
+    <div class="row">
+      <div class="col-md-4">
+
+        <% if logged_in_with_github? %>
+          <div class="follow-github">
+            <!-- all the classes you can follow -->
+            <h4>Follow on Github</h4>
+            <% @cohorts.each do |cohort| %>
+              <%= render partial: 'follow_github', locals:{cohort: cohort, provider: "github"} %>
+            <% end %>
+
+            <br><br>
+
+          <%= link_to(logout_github_path, {class: "btn btn-block btn-social btn-github", id: "github-connect"}) do %>
+             <span class="fa fa-github"></span>Log out of Github
+          <% end %>
+
+          </div>
+        <% else %>   
+          <%= link_to(login_github_path, {class: "btn btn-block btn-social btn-github", id: "github-connect"}) do %>
+             <span class="fa fa-github"></span>Log in with Github
+          <% end %>
+
+        <% end %>
+
+      </div>
+
+      <div class="col-md-4">
+
+      <% if logged_in_with_twitter? %>
+        <div class="follow-twitter">
+          <!-- all the classes you can follow -->
+          <h4>Follow on Twitter</h4>
+          <% @cohorts.each do |cohort| %>
+            <%= render partial: 'follow_twitter', locals:{cohort: cohort, provider: "twitter"} %>
+          <% end %>
+
+          <br>
+          <br>
+
+          <%= link_to(twitter_log_out_path, {class: "btn btn-block btn-social btn-twitter", id: "twitter-connect"}) do %>
+            <span class="fa fa-twitter"></span> Log out of Twitter
+          <% end %>
+        </div>
+
+      <% else %>
+          <%= link_to(twitter_login_path, {class: "btn btn-block btn-social btn-twitter", id: "twitter-connect"}) do %>
+            <span class="fa fa-twitter"></span> Log in with Twitter
+          <% end %>      
+      <% end %>
+
+    </div>
+  </div>
 </div>
-
-<h3>Connect Your Accounts</h3>
-
-<h4>Github</h4>
-<%= link_to 'Log in with Github',  login_github_path, id: "github-connect" %>
-<%= link_to 'Log Out of Github', logout_github_path %>
-
-
-<h4>Twitter</h4>
-<%= link_to 'Log In with Twitter', twitter_login_path, id: "twitter-connect" %>
-<%= link_to 'Log Out of Twitter', twitter_log_out_path %>
-
-<% if logged_in_with_twitter? %>
-  <div class="follow-twitter">
-    <!-- all the classes you can follow -->
-    <h4>Follow on Twitter</h4>
-    <% @cohorts.each do |cohort| %>
-      <%= render partial: 'follow_twitter', locals:{cohort: cohort, provider: "twitter"} %>
-    <% end %>
-  </div>
-<% end %>
-
-<% if logged_in_with_github? %>
-  <div class="follow-github">
-    <!-- all the classes you can follow -->
-    <h4>Follow on Github</h4>
-    <% @cohorts.each do |cohort| %>
-      <%= render partial: 'follow_github', locals:{cohort: cohort, provider: "github"} %>
-    <% end %>
-  </div>
-<% end %>

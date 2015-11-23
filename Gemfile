@@ -43,9 +43,12 @@ gem 'bcrypt', '~> 3.1.7'
 # twitter bootstrap css & javascript toolkit
 gem 'twitter-bootswatch-rails', '~> 3.3.4'
 
+gem 'twitter-bootswatch-rails-fontawesome'
+
 # twitter bootstrap helpers gem, e.g., alerts etc...
 gem 'twitter-bootswatch-rails-helpers'
 gem 'therubyracer'
+gem 'font-awesome-sass'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

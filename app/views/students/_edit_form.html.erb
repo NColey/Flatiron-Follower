@@ -1,7 +1,7 @@
 <%= form_for(@student) do |f| %>
 
   <div class="field form-group">
-    <p>Welcome <%= @student.name %>
+    <p>Welcome, <%= @student.name %>.
   </div>
 
   <div class="field form-group">
@@ -9,38 +9,28 @@
     <%= f.email_field :email, :size => "40", placeholder: "Email", class: 'form-control' %>
   </div>
 
-   <br>
-
   <div class="field form-group">
     <%= f.label :password %>
     <%= f.password_field :password, placeholder: "Password", class: 'form-control' %>
   </div>
 
-  <br>
-
   <div class="field form-group">
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, placeholder: "Password confirmation", class: 'form-control' %><br>
+    <%= f.password_field :password_confirmation, placeholder: "Password confirmation", class: 'form-control' %>
   </div>
-
-  <br>
 
   <div class="field form-group">
     <%= f.label :twitter_handle %>
-    <%= f.text_field :twitter_handle, placeholder: "Twitter handle", class: 'form-control' %><br>
+    <%= f.text_field :twitter_handle, placeholder: "Twitter handle", class: 'form-control' %>
   </div>  
-
-  <br>
 
   <div class="field form-group">
     <%= f.label :github_handle %>
-    <%= f.text_field :github_handle, placeholder: "Github handle", class: 'form-control' %><br>
+    <%= f.text_field :github_handle, placeholder: "Github handle", class: 'form-control' %>
   </div>  
 
-  <br>
-
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save", :class => "btn btn-default" %>
   </div>
 
 <% end %>

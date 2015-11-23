@@ -1,7 +1,18 @@
 <h2>Flatiron Cohorts</h2>
 
-<ul>
-<% @cohorts.each do |cohort| %>
-  <li><%= link_to cohort.name, cohort_path(cohort) %> | <%= link_to "Edit", edit_cohort_path(cohort) %> | <a href="<%= cohort.url %>" target="_blank">View on Web</a></li> 
-<% end %>
-</ul>
+<table class="table table-striped table-hover">
+  <thead>
+    <th>Cohort</th>
+    <th>Manage Cohort</th>
+    <th>Student Site</th>
+  </thead>
+  <tbody>
+  <% @cohorts.each do |cohort| %>
+    <tr>
+      <td><%= link_to cohort.name, cohort_path(cohort) %></td>
+      <td><%= link_to "Edit", edit_cohort_path(cohort) %> </td>
+      <td><a href="<%= cohort.url %>" target="_blank">View on Web</a></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

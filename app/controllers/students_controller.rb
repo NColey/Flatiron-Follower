@@ -6,42 +6,42 @@ class StudentsController < ApplicationController
 
 	def update
 		@student = Student.find(params[:id])
-		if @student.password != nil
-			flash.now.alert = "Sorry this user already has an account!"
-		end
-		
-		if @student.update_attributes(student_params)
+
+		if @student.password_digest != nil
+			flash.now[:alert] = "Sorry this user already has an account!"
+      render "edit"
+		elsif @student.update_attributes(student_params)
 			log_in(@student)
 			redirect_to @student
 		else
-			flash.now.alert = "Sorry, we could not sign you up!"
-		  	render "edit"
+			flash.now[:alert] = "Sorry, we could not sign you up!"
+		  render "edit"
 		end
 	end
 
-  	def show
-    	@cohorts = Cohort.all
-    	@student = Student.find(params[:id])
-  	end
+	def show
+  	@cohorts = Cohort.all
+  	@student = Student.find(params[:id])
+	end
 
-    def twitter_connect
-    	@student = current_student
-    	@student.update(provider: auth_hash.provider, uid: auth_hash.uid, token: auth_hash.credentials.token, secret: auth_hash.credentials.secret)
-    	redirect_to student_profile_path(@student)
-    end
+  def twitter_connect
+  	@student = current_student
+  	@student.update(provider: auth_hash.provider, uid: auth_hash.uid, token: auth_hash.credentials.token, secret: auth_hash.credentials.secret)
+  	redirect_to student_profile_path(@student)
+  end
 
-   	def github_connect
-    	@student = current_student
-    	@student.update(auth_hash["provider"]=>auth_hash["credentials"]["token"])
-    	redirect_to student_profile_path(@student)
-  	end 
+ 	def github_connect
+  	@student = current_student
+  	@student.update(auth_hash["provider"]=>auth_hash["credentials"]["token"])
+  	redirect_to student_profile_path(@student)
+	end 
 
-    def destroy_github
-      @student = current_student
-      @student.github = nil
-      @student.save
-      redirect_to student_profile_path(@student)
-    end
+  def destroy_github
+    @student = current_student
+    @student.github = nil
+    @student.save
+    redirect_to student_profile_path(@student)
+  end
 
 	private
 

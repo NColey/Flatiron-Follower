@@ -40,6 +40,9 @@ class CohortsController < ApplicationController
 
   def follow_cohort
     cohort_id = follow_params[:id]
+    @cohort = Cohort.find(cohort_id)
+    cohort_name = @cohort.name
+
     provider = follow_params[:provider]
     @student = Student.find_by(id: session[:student_id])
 
@@ -52,7 +55,7 @@ class CohortsController < ApplicationController
       client.follow(cohort_id)
     end
 
-    render json: {:cohort_id => cohort_id}
+    render json: {:cohort_id => cohort_id, :cohort_name => cohort_name, :provider => provider}
   end
 
   def unfollow_cohort

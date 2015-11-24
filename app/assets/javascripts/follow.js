@@ -1,19 +1,16 @@
 $(document).ready(function(){
-  hideSuccessMessage();
   followAllListener();
 })
 
 function followAllListener(){
   $(".follow-all").on("ajax:success", function(event, data){
-      var id = data.cohort_id
-      showSuccessMessage(id);
+      var id = data.cohort_id;
+      var name = data.cohort_name;
+      var provider = data.provider;
+      showSuccessMessage(id, name, provider);
     })
 }
 
-function hideSuccessMessage(){
-  $("span[class*='follow-success']").hide();
-}
-
-function showSuccessMessage(id){
-  $(".follow-success-"+id).show();
+function showSuccessMessage(id, name, provider){
+  $(".follow-success-"+provider+"-"+id).append(" | Woohoo! You're now following " + name + "!");
 }

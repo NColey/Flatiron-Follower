@@ -8,8 +8,7 @@ class StudentsController < ApplicationController
 		@student = Student.find(params[:id])
 
 		if @student.password_digest != nil
-			flash.now[:alert] = "Sorry this user already has an account!"
-      render "edit"
+      		render "edit"
 		elsif @student.update_attributes(student_params)
 			log_in(@student)
 			redirect_to @student
@@ -20,28 +19,28 @@ class StudentsController < ApplicationController
 	end
 
 	def show
-  	@cohorts = Cohort.all
-  	@student = Student.find(params[:id])
+	  	@cohorts = Cohort.all
+	  	@student = Student.find(params[:id])
 	end
 
-  def twitter_connect
-  	@student = current_student
-  	@student.update(provider: auth_hash.provider, uid: auth_hash.uid, token: auth_hash.credentials.token, secret: auth_hash.credentials.secret)
-  	redirect_to student_profile_path(@student)
-  end
+  	def twitter_connect
+	  	@student = current_student
+	  	@student.update(provider: auth_hash.provider, uid: auth_hash.uid, token: auth_hash.credentials.token, secret: auth_hash.credentials.secret)
+	  	redirect_to student_profile_path(@student)
+  	end
 
  	def github_connect
-  	@student = current_student
-  	@student.update(auth_hash["provider"]=>auth_hash["credentials"]["token"])
-  	redirect_to student_profile_path(@student)
+	  	@student = current_student
+	  	@student.update(auth_hash["provider"]=>auth_hash["credentials"]["token"])
+	  	redirect_to student_profile_path(@student)
 	end 
 
-  def destroy_github
-    @student = current_student
-    @student.github = nil
-    @student.save
-    redirect_to student_profile_path(@student)
-  end
+	def destroy_github
+	  @student = current_student
+	  @student.github = nil
+	  @student.save
+	  redirect_to student_profile_path(@student)
+	end
 
 	private
 

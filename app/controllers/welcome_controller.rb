@@ -6,7 +6,12 @@ class WelcomeController < ApplicationController
 
 	def create
 		@student = Student.find(params[:student][:id])
-		redirect_to edit_student_path(@student)
+		if @student.password_digest != nil
+			flash.now[:alert] = "Sorry this user already has an account!"
+      		redirect_to login_path(@student)
+      	else
+			redirect_to edit_student_path(@student)
+		end
 	end
 	
 end

@@ -20,7 +20,7 @@ class Scraper
 	end
 
 		
-	def student_page_array #question about url
+	def student_page_array
 		students_name_array = get_student_data('div.blog-title h3 a').collect do |name_data|
 			self.url + name_data['href']
 		end
@@ -46,35 +46,5 @@ class Scraper
 		    @student.save(:validate=>false)
 		end
 	end
-
-	# def hash_twitter
-	#   hash = student_twitter_hash.reject{|name, url| url =="https://twitter.com/"}
-	#   hash_cleansed = hash.delete_if do |name, link|
-	#   	name == "" || name == "Student Name"
-	#   end
-	#   #add them back in
-	#   hash_cleansed["Madeline Ford"] = "https://twitter.com/mford22392"
-	#   hash_cleansed["Michael Sterling"] = "https://twitter.com/sterlinglit"
-	#   hash_cleansed["Amanda Johns"] = "https://twitter.com/AmandaKJohns"
-	#   hash_cleansed
-	# end
-
-	# def username_array
-	# 	array_of_handles = hash_twitter.values.reject{|url| url == "https://twitter.com/"}.map{|url| url[20..-1]}
-	# end
-
-	# def twitter_username_hash
-	# 	username_hash = hash_twitter
-	# 	username_hash.inject({}) {|hash, (name, twitter_link)| hash[name] = twitter_link.slice! "https://twitter.com/"; hash}
-	# 	return username_hash
-	# end
-
-	# def remove_self_from_array(twitter_handle)
-	# 	username_array.reject {|username| username == twitter_handle}
-	# end
-
-	# def remove_self_from_hash(twitter_handle)
-	# 	twitter_username_hash.reject {|name, handle| handle == twitter_handle}
-	# end
 
 end

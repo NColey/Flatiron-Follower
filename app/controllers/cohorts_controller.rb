@@ -56,8 +56,12 @@ class CohortsController < ApplicationController
       client = Adapters::GithubConnection.new
       client.follow(token, cohort_id)
     elsif provider =='twitter'
-      client = Adapters::TwitterConnection.new
-      client.follow(cohort_id)
+      twitter = TwitterConnection.new(@student)
+      begin
+        twitter.follow(cohort_id)
+      rescue
+        flash.now[:alert] = "Some of your classmates have suspended or protected accounts. You have followed everyone else."
+      end
     end
 
     render json: {:cohort_id => cohort_id, :cohort_name => cohort_name, :provider => provider}
@@ -73,32 +77,16 @@ class CohortsController < ApplicationController
       client = Adapters::GithubConnection.new
       client.unfollow(token, cohort_id)
     elsif provider == 'twitter'
-      @student.token = token
-      @student.secret = secret
-      client = Adapters::TwitterConnection.new
-      client.unfollow(cohort_id, token, secret)
+      twitter = TwitterConnection.new(@student)
+      begin
+        twitter.unfollow(cohort_id)
+      rescue
+        flash.now[:alert] = "Some of your classmates have suspended or protected accounts. You have unfollowed everyone else."
+      end
     end
-    
-    redirect_to current_student
+
+    redirect_to @student
   end
-
-  # def follow_cohort_twitter
-  #   cohort_id = follow_params[:id]
-  #   provder = follow_params[:provder]
-  #   @student = Student.find_by(id: session[:student_id])
-  #   client = Adapters::TwitterConnection.new
-  #   client.follow(cohort_id)
-  #   render json: {:cohort_id => cohort_id}
-  # end
-
-  # def unfollow_cohort_twitter
-  #   cohort_id = follow_params[:id]
-  #   provider = follow_params[:provider]
-  #   @student = Student.find_by(id: session[:student_id])
-  #   client = Adapters::TwitterConnection.new
-  #   client.unfollow(cohort_id)
-  #   redirect_to current_student
-  # end
 
   private
 

@@ -1,5 +1,8 @@
 <h2>Welcome to <%= @cohort.name %></h2>
 
+<%= button_to "Scrape", scrape_cohort_path, :class => "btn btn-default"%>
+<br>
+
 <ul>
   <% @students.each do |student| %>
     <li><%= student.name %> | <%= link_to "Edit", edit_student_path(student) %></li>

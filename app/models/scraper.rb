@@ -42,7 +42,8 @@ class Scraper
 		    twitter = profile_doc.search('.social-icons a')[0].attr('href')[20..-1] if profile_doc.search('.social-icons a')[0]
 		    github = profile_doc.search('.social-icons a')[2].attr('href')[19..-1] if profile_doc.search('.social-icons a')[2]
 		    linkedin = profile_doc.search('.social-icons a')[1].attr('href') if profile_doc.search('.social-icons a')[1]
-		    Student.create(name: name, twitter_handle: twitter, github_handle: github, linkedin_url: linkedin, cohort_id: self.cohort_id)
+		    @student = Student.new(name: name, twitter_handle: twitter, github_handle: github, linkedin_url: linkedin, cohort_id: self.cohort_id)
+		    @student.save(:validate=>false)
 		end
 	end
 

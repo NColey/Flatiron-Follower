@@ -30,7 +30,10 @@ Rails.application.routes.draw do
   delete '/cohorts/:id/unfollow/:provider' => 'cohorts#unfollow_cohort', as: :unfollow_cohort
 
   #cohorts crud
+  post '/cohorts/:id/scrape' => 'cohorts#scrape', as: :scrape_cohort
   resources :cohorts
+
+
 
 
 end

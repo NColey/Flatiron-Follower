@@ -16,6 +16,11 @@ class CohortsController < ApplicationController
 	def create
     @cohort = Cohort.new(cohort_params)
     @cohort.save 
+    redirect_to @cohort
+  end
+
+  def scrape
+    @cohort = Cohort.find(params[:id])
     scraper = Scraper.new(@cohort.url, @cohort.id)
     scraper.scrape_student_info
     redirect_to @cohort

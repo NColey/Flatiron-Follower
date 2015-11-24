@@ -1,7 +1,11 @@
 <%= form_for @cohort do |f| %>
-  <p><%= f.label :name %></p>
-  <p><%= f.text_field :name, placeholder: "Cohort Name" %></p>
-  <p><%= f.label :url %></p>
-  <p><%= f.text_field :url, size: 80, placeholder: "Cohort student page URL" %></p>
-  <%= f.submit "Add" %>
+  <div class="field form-group">
+    <p><%= f.label :name %></p>
+    <p><%= f.text_field :name, placeholder: "Cohort Name", class: "form-control" %></p>
+  </div>
+  <div class="field form-group">
+    <p><%= f.label :url %></p>
+    <p><%= f.text_field :url, placeholder: "Cohort student page URL", class: "form-control" %></p>
+  </div>
+  <%= f.submit "Add", class: 'btn btn-default' %>
 <% end %>

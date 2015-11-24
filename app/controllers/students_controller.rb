@@ -14,7 +14,7 @@ class StudentsController < ApplicationController
 			redirect_to @student
 		else
 			flash.now[:alert] = "Sorry, we could not sign you up!"
-		  render "edit"
+		  	render "edit"
 		end
 	end
 
@@ -36,10 +36,10 @@ class StudentsController < ApplicationController
 	end 
 
 	def destroy_github
-	  @student = current_student
-	  @student.github = nil
-	  @student.save
-	  redirect_to student_profile_path(@student)
+		@student = current_student
+		@student.github = nil
+		@student.save
+		redirect_to student_profile_path(@student)
 	end
 
 	private

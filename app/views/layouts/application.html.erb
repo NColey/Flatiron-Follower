@@ -10,10 +10,11 @@
 
 </head>
 <body>
-
+  
   <%= render '/layouts/header' %>
   <div class="container">
-
+  	<%= render '/layouts/flash_messages' %>
+  	
     <%= content_for?(:cohorts) ? yield(:cohorts) : yield %>
   </div>
 </body>

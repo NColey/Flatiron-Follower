@@ -7,13 +7,15 @@ class StudentsController < ApplicationController
 	def update
 		@student = Student.find(params[:id])
 
-		if @student.password_digest != nil
-      		render "edit"
-		elsif @student.update_attributes(student_params)
-			log_in(@student)
-			redirect_to @student
+		if @student.update_attributes(student_params)
+				log_in(@student)
+				redirect_to @student
 		else
-			flash.now[:alert] = "Sorry, we could not sign you up!"
+			if !current_student
+				flash.now[:alert] = "Sorry, we could not sign you up!"
+			else
+				flash.now[:alert] = "Sorry, we could not edit your information!"
+			end
 		  	render "edit"
 		end
 	end

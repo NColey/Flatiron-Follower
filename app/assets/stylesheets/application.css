@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require flatly
+ *= require font-awesome
  *= require bootstrap-social
  *= require_self
  */

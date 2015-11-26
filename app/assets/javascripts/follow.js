@@ -1,5 +1,6 @@
 $(document).ready(function(){
   followAllListener();
+  filterStudentListener();
 })
 
 function followAllListener(){
@@ -14,4 +15,28 @@ function followAllListener(){
 
 function showSuccessMessage(id, name, provider){
   $(".follow-success-"+provider+"-"+id).append(" | Woohoo! You're now following " + name + "!");
+}
+
+function filterStudentListener(){
+  $("#student-filter-dropdown").change(function(){
+    var cohortId = $("#student-filter-dropdown option:selected").val();
+    $.ajax({
+      url: "students/filter",
+      method: "GET",
+      data: { cohort_id : cohortId},
+    })
+    .done(function(data){
+      var result = generateStudentDivs(data);
+      $("#students-collection").html(result);
+    });
+  })
+}
+
+function generateStudentDivs(array){
+  var result = "";
+  for(var i = 0; i < array.length; i++){
+    result += "<div><h3>"+array[i].name+"</h3></div>"
+  };
+  return result;
+
 }

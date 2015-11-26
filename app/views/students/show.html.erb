@@ -36,13 +36,13 @@
         <% if logged_in_with_github? %>
           <div class="follow-github">
             <!-- all the classes you can follow -->
-            <h4>Follow on Github</h4>
+          <!--   <h4>Follow on Github</h4>
             <% @cohorts.each do |cohort| %>
               <%= render partial: 'follow_github', locals:{cohort: cohort, provider: "github"} %>
             <% end %>
 
             <br><br>
-
+ -->
           <%= link_to(logout_github_path, {class: "btn btn-block btn-social btn-github", id: "github-connect"}) do %>
              <span class="fa fa-github"></span>Log out of Github
           <% end %>
@@ -62,13 +62,13 @@
       <% if logged_in_with_twitter? %>
         <div class="follow-twitter">
           <!-- all the classes you can follow -->
-          <h4>Follow on Twitter</h4>
+        <!--   <h4>Follow on Twitter</h4>
           <% @cohorts.each do |cohort| %>
             <%= render partial: 'follow_twitter', locals:{cohort: cohort, provider: "twitter"} %>
           <% end %>
 
           <br>
-          <br>
+          <br> -->
 
           <%= link_to(twitter_log_out_path, {class: "btn btn-block btn-social btn-twitter", id: "twitter-connect"}) do %>
             <span class="fa fa-twitter"></span> Log out of Twitter

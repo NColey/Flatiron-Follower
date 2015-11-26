@@ -30,7 +30,7 @@ class StudentsController < ApplicationController
   end
 
   def student_filter
-    @students = Student.where(cohort_id: params[:cohort_id]).sort
+    @students = Student.where(cohort_id: params[:cohort_id]).order(:name)
     render json: @students
   end
 

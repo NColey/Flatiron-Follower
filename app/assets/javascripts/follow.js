@@ -35,7 +35,7 @@ function filterStudentListener(){
 function generateStudentDivs(array){
   var result = "";
   for(var i = 0; i < array.length; i++){
-    result += "<div><h3>"+array[i].name+"</h3></div>"
+    result += "<div class='col-xs-4'><h3>"+array[i].name+"</h3></div>"
   };
   return result;
 

@@ -53,10 +53,8 @@ class CohortsController < ApplicationController
 
     if provider == 'github'
       token = @student.send(provider)
-      # client = Adapters::GithubConnection.new
       @student.github_client.follow(token, cohort_id)
     elsif provider =='twitter'
-      # client = Adapters::TwitterConnection.new
       @student.twitter_client.follow(cohort_id)
     end
 
@@ -70,15 +68,13 @@ class CohortsController < ApplicationController
 
     if provider == 'github'
       token = @student.send(provider)
-      # client = Adapters::GithubConnection.new
       @student.github_client.unfollow(token, cohort_id)
     elsif provider == 'twitter'
       @student.token = token
       @student.secret = secret
-      # client = Adapters::TwitterConnection.new
       @student.twitter_client.unfollow(cohort_id, token, secret)
     end
-    
+
     redirect_to current_student
   end
 
@@ -100,7 +96,7 @@ class CohortsController < ApplicationController
   #   redirect_to current_student
   # end
 
-  private
+private
 
 	def cohort_params
   	params.require(:cohort).permit(:name, :url)

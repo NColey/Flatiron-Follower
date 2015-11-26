@@ -23,6 +23,7 @@
       <ul class="nav navbar-nav">
         <li class="navbar-text">Hello, <%= current_student.name %>!</li>
         <li> <%= link_to "My Profile", student_profile_path(current_student) %></li>
+        <li> <%= link_to "Students", students_path %></li>
         <% if current_student.try(:admin?) %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Manage Cohorts<span class="caret"></span></a>

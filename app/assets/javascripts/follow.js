@@ -8,6 +8,7 @@ function followAllListener(){
       var name = data.cohort_name;
       var provider = data.provider;
       showSuccessMessage(id, name, provider);
+      $(this).hide();
     })
 }
 

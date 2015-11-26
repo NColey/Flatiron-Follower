@@ -1,0 +1,14 @@
+<div class="col-xs-2">
+</div>
+<div class="col-xs-4">
+  <% if logged_in_with_twitter? %>
+    <%= render partial: 'follow_twitter', locals:{cohort: cohort, provider: "twitter"} %>
+    <% end %>
+</div>
+<div class="col-xs-4">
+  <% if logged_in_with_github? %>
+  <%= render partial: 'follow_github', locals:{cohort: cohort, provider: "github"} %>
+  <% end %>
+</div>
+<div class="col-xs-2">
+</div>

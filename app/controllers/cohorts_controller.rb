@@ -63,6 +63,9 @@ class CohortsController < ApplicationController
 
   def unfollow_cohort
     cohort_id = follow_params[:id]
+    @cohort = Cohort.find(cohort_id)
+    cohort_name = @cohort.name
+
     provider = follow_params[:provider]
     @student = Student.find_by(id: session[:student_id])
 
@@ -74,8 +77,7 @@ class CohortsController < ApplicationController
       @student.secret = secret
       @student.twitter_client.unfollow(cohort_id, token, secret)
     end
-
-    redirect_to current_student
+    render json: {:cohort_id => cohort_id, :cohort_name => cohort_name, :provider => provider}
   end
 
   # def follow_cohort_twitter

@@ -30,11 +30,13 @@ class StudentsController < ApplicationController
   end
 
   def student_filter
+    cohort = Cohort.find(params[:cohort_id])
     @students = Student.where(cohort_id: params[:cohort_id]).order(:name)
     html = @students.map do |student|
       render_to_string(partial: "students/student_index_div", locals: {:student => student})
-    end
-     render json: {html: html.join()}
+    end.join()
+    cohort_html = render_to_string(partial: "students/follow_cohort", locals: {:cohort => cohort})
+    render json: {html: html, cohort_html: cohort_html}
   end
 
   def twitter_connect

@@ -43,7 +43,7 @@ class StudentsController < ApplicationController
     redirect_to student_profile_path(@student)
   end
 
-	private
+private
 
 	def student_params
 		params.require(:student).permit(:email, :password, :password_confirmation, :twitter_handle, :github_handle)
@@ -51,6 +51,6 @@ class StudentsController < ApplicationController
 
 	def auth_hash
     	request.env['omniauth.auth']
-  	end
+  end
 end
 

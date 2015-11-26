@@ -53,11 +53,11 @@ class CohortsController < ApplicationController
 
     if provider == 'github'
       token = @student.send(provider)
-      client = Adapters::GithubConnection.new
-      client.follow(token, cohort_id)
+      # client = Adapters::GithubConnection.new
+      @student.github_client.follow(token, cohort_id)
     elsif provider =='twitter'
-      client = Adapters::TwitterConnection.new
-      client.follow(cohort_id)
+      # client = Adapters::TwitterConnection.new
+      @student.twitter_client.follow(cohort_id)
     end
 
     render json: {:cohort_id => cohort_id, :cohort_name => cohort_name, :provider => provider}
@@ -70,13 +70,13 @@ class CohortsController < ApplicationController
 
     if provider == 'github'
       token = @student.send(provider)
-      client = Adapters::GithubConnection.new
-      client.unfollow(token, cohort_id)
+      # client = Adapters::GithubConnection.new
+      @student.github_client.unfollow(token, cohort_id)
     elsif provider == 'twitter'
       @student.token = token
       @student.secret = secret
-      client = Adapters::TwitterConnection.new
-      client.unfollow(cohort_id, token, secret)
+      # client = Adapters::TwitterConnection.new
+      @student.twitter_client.unfollow(cohort_id, token, secret)
     end
     
     redirect_to current_student

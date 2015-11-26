@@ -24,6 +24,16 @@ class StudentsController < ApplicationController
   	@student = Student.find(params[:id])
 	end
 
+  def index
+    @student = Student.new
+    @students = Student.all
+  end
+
+  def student_filter
+    @students = Student.where(cohort_id: params[:cohort_id]).sort
+    render json: @students
+  end
+
   def twitter_connect
   	@student = current_student
   	@student.update(provider: auth_hash.provider, uid: auth_hash.uid, token: auth_hash.credentials.token, secret: auth_hash.credentials.secret)

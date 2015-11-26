@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   #profile page
+  get 'students/filter' => 'students#student_filter'
   get 'students/:id' => 'students#show', as: :student_profile
+
 
   #log in with twitter
   get '/login/twitter', to: redirect('/auth/twitter'), as: :twitter_login

@@ -1,0 +1,6 @@
+<%= form_for @student, url: {action: "student_filter", remote: true}, html:{class: "field form-group", id: "student-filter-dropdown"} do |f| %>
+  <%= f.collection_select(:cohort_id, Cohort.all, :id, :name, {:prompt => "Select a cohort",}, {class: "form-control"}) %>
+<% end %>
+
+<div id="students-collection">
+</div>

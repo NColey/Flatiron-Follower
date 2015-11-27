@@ -11,5 +11,12 @@ class Student < ActiveRecord::Base
 	  ENV['DECRYPT_GITHUB_OAUTH']
 	end
   
+  def twitter_client
+    @client ||= Adapters::TwitterConnection.new
+  end
+
+  def github_client
+    @client ||= Adapters::GithubConnection.new
+  end
 
 end

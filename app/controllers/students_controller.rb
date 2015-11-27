@@ -21,20 +21,35 @@ class StudentsController < ApplicationController
 	end
 
 	def show
-	  	@cohorts = Cohort.all
-	  	@student = Student.find(params[:id])
+  	@cohorts = Cohort.all
+  	@student = Student.find(params[:id])
 	end
 
-  	def twitter_connect
-	  	@student = current_student
-	  	@student.update(provider: auth_hash.provider, uid: auth_hash.uid, token: auth_hash.credentials.token, secret: auth_hash.credentials.secret)
-	  	redirect_to student_profile_path(@student)
-  	end
+  def index
+    @student = Student.new
+    @students = Student.all
+  end
+
+  def student_filter
+    cohort = Cohort.find(params[:cohort_id])
+    @students = Student.where(cohort_id: params[:cohort_id]).order(:name)
+    html = @students.map do |student|
+      render_to_string(partial: "students/student_index_div", locals: {:student => student})
+    end.join()
+    cohort_html = render_to_string(partial: "students/follow_cohort", locals: {:cohort => cohort})
+    render json: {html: html, cohort_html: cohort_html}
+  end
+
+  def twitter_connect
+  	@student = current_student
+  	@student.update(provider: auth_hash.provider, uid: auth_hash.uid, token: auth_hash.credentials.token, secret: auth_hash.credentials.secret)
+  	redirect_to student_profile_path(@student)
+  end
 
  	def github_connect
-	  	@student = current_student
-	  	@student.update(auth_hash["provider"]=>auth_hash["credentials"]["token"])
-	  	redirect_to student_profile_path(@student)
+  	@student = current_student
+  	@student.update(auth_hash["provider"]=>auth_hash["credentials"]["token"])
+  	redirect_to student_profile_path(@student)
 	end 
 
 	def destroy_github
@@ -44,7 +59,7 @@ class StudentsController < ApplicationController
 		redirect_to student_profile_path(@student)
 	end
 
-	private
+private
 
 	def student_params
 		params.require(:student).permit(:email, :password, :password_confirmation, :twitter_handle, :github_handle)
@@ -52,6 +67,6 @@ class StudentsController < ApplicationController
 
 	def auth_hash
     	request.env['omniauth.auth']
-  	end
+  end
 end
 

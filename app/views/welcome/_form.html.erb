@@ -3,12 +3,12 @@
   <div class="field form-group">
     <p>Select your cohort.</p>
     <%= f.label :cohort %>
-    <%= collection_select(:student, :cohort_id, Cohort.all, :id, :name, {}, {class: "form-control"}) %>
+    <%= collection_select(:student, :cohort_id, Cohort.order('name DESC'), :id, :name, {:include_blank => "Cohorts"}, {class: "form-control"}) %>
   </div>
   <div class="field form-group">
     <p>Select your name.</p>
     <%= f.label :name %>
-    <%= collection_select(:student, :id, Student.all, :id, :name, {}, {class: "form-control"}) %>
+    <%= collection_select(:student, :id, Student.order('name ASC'), :id, :name, {include_blank: "Students"}, {class: "form-control"}) %>
   </div>
 
   <div class="actions">

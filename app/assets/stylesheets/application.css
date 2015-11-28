@@ -13,5 +13,6 @@
  *= require flatly
  *= require font-awesome
  *= require bootstrap-social
+ *= require custom
  *= require_self
  */

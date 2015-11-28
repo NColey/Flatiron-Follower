@@ -46,6 +46,8 @@
           <%= link_to(logout_github_path, {class: "btn btn-block btn-social btn-github", id: "github-connect"}) do %>
              <span class="fa fa-github"></span>Log out of Github
           <% end %>
+          <br>
+          <p>Your Github account is now connected!</p>
 
           </div>
         <% else %>   
@@ -73,6 +75,8 @@
           <%= link_to(twitter_log_out_path, {class: "btn btn-block btn-social btn-twitter", id: "twitter-connect"}) do %>
             <span class="fa fa-twitter"></span> Log out of Twitter
           <% end %>
+          <br>
+          <p>Your Twitter account is now connected!</p>
         </div>
 
       <% else %>
@@ -83,4 +87,5 @@
 
     </div>
   </div>
+</div>
 </div>

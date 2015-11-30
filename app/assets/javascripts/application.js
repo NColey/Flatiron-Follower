@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require flatly
 //= require turbolinks
+//= require signup
 //= require follow
 

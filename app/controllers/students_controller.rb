@@ -8,8 +8,14 @@ class StudentsController < ApplicationController
 		@student = Student.find(params[:id])
 
 		if @student.update_attributes(student_params)
+			if !@student.activated
+				StudentEmailConfirmation.account_activation(@student).deliver_now
+				flash.now[:alert] = "Please check your email to activate your account."
+				redirect_to root_url
+			else
 				log_in(@student)
 				redirect_to @student
+			end
 		else
 			if !current_student
 				flash.now[:alert] = "Sorry, we could not sign you up!"

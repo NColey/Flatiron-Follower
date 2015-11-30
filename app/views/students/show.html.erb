@@ -9,19 +9,19 @@
       <tbody>
         <tr>
           <td><i class="fa fa-envelope-o"></i></td>
-          <td><%= @student.email %></td>
+          <td><%= current_student.email %></td>
         </tr>
         <tr>
           <td><i class="fa fa-twitter"></i></td>
-          <td><%= @student.twitter_handle %></td>
+          <td><%= current_student.twitter_handle %></td>
         </tr>
         <tr>
           <td><i class="fa fa-github"></i></td>
-          <td><%= @student.github_handle %></td>
+          <td><%= current_student.github_handle %></td>
         </tr>
       </tbody>
     </table>
-    <%= link_to "Edit Your Profile", edit_student_path(@student) %>
+    <%= link_to "Edit Your Profile", edit_student_path(current_student) %>
       
 
 

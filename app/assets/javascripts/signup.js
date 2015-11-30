@@ -11,7 +11,7 @@ function filterStudentByCohortListener(){
   $("#cohort-dropdown").change(function(){
 
   var cohortID = $("#cohort-dropdown option:selected").val();
-  var filterBy = "option[value='"+ cohortID + "']";
+  var filterBy = "option[cohort-id='"+ cohortID + "']";
   var options = $(students).filter(filterBy)
 
   if(cohortID != ""){

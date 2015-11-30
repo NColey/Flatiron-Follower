@@ -1,12 +1,19 @@
 <div class="row">
-    <div class="col-md-5">
-      <%= image_tag("hastronauts.jpg", class: "img-responsive center-block") %>
+    <div class="col-md-6">
       <h2>Follow your friends, fast.</h2>
       <p>Follow all your friends at the Flatiron School in one place.</p>
+      <%= image_tag("hastronauts.jpg", class: "img-responsive center-block") %>
+      <br><br>      
+      <p>Just sign up, connect your Twitter and Github accounts, and start following your classmates!</p>
     </div>
-   <div class="col-md-5 col-md-offset-2">
+   <div class="col-md-5 col-md-offset-1">
       <% if current_student %>
-        <p>Welcome!</p>
+        <h2>Thanks for stopping by!</h2>
+        <p>If you're all done following everyone, go ahead and log out. We'll destroy your tokens when you do.</p>
+        <p>Oh, right, you wanted an Easter Egg...sure, sure, one second.</p>
+        <%= image_tag("jeff-what-the-what.jpg", class: "img-responsive center-block") %>
+        <br>
+        <p>You're welcome.</p>
       <% else %>
         <h3>Sign Up</h3>
         <%= render 'form' %>

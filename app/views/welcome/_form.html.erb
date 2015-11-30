@@ -8,7 +8,7 @@
   <div class="field form-group">
     <p>Select your name.</p>
     <%= f.label :name %>
-     <%= collection_select(:student, :cohort_id, Student.order('name ASC'), :cohort_id, :name, {include_blank: "Students"}, {class: "form-control", id: "student-by-cohort-dropdown"}) %>
+     <%= select(:student, :id, Student.order('name ASC').map {|s| [s.name, s.id, {:'cohort-id' => s.cohort_id}]}, {include_blank: "Students"}, {class: "form-control", id: "student-by-cohort-dropdown"}) %>
   </div>
 
   <div class="actions">

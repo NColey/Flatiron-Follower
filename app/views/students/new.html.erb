@@ -1,0 +1,12 @@
+<% content_for :cohorts do %>
+
+  <% if current_student.try(:admin?) %>
+
+    <%= render 'new_form' %>
+
+  <% else %>
+    <p>Sorry, you don't have access to this page.</p>
+  <% end %>
+
+<% end %>
+

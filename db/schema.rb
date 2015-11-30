@@ -33,20 +33,15 @@ ActiveRecord::Schema.define(version: 20151130053120) do
     t.string   "github_handle"
     t.string   "linkedin_url"
     t.string   "twitter_handle"
+    t.string   "encrypted_github"
     t.string   "provider"
     t.string   "uid"
     t.string   "token"
     t.string   "secret"
-    t.string   "encrypted_github"
     t.boolean  "admin"
     t.string   "activation_digest"
     t.boolean  "activated"
     t.datetime "activated_at"
-  end
-
-  create_table "twitter_connections", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

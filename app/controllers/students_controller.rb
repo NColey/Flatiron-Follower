@@ -1,5 +1,15 @@
 class StudentsController < ApplicationController
 
+  def new
+    @student = Student.new
+  end
+
+  def create
+    @student = Student.new(student_params)
+    @student.save!(:validate => false)
+    redirect_to students_path
+  end
+
 	def edit
 		@student = Student.find(params[:id])
 	end
@@ -68,7 +78,7 @@ class StudentsController < ApplicationController
 private
 
 	def student_params
-		params.require(:student).permit(:email, :password, :password_confirmation, :twitter_handle, :github_handle)
+		params.require(:student).permit(:name, :email, :password, :password_confirmation, :twitter_handle, :github_handle, :cohort_id)
 	end
 
 	def auth_hash

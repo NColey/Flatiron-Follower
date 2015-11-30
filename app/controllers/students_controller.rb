@@ -11,7 +11,7 @@ class StudentsController < ApplicationController
 			if !@student.activated
 				StudentEmailConfirmation.account_activation(@student).deliver_now
 				flash.now[:alert] = "Please check your email to activate your account."
-				redirect_to root_url
+				redirect_to login_path
 			else
 				log_in(@student)
 				redirect_to @student

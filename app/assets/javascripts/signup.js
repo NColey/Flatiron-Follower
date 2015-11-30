@@ -7,6 +7,8 @@ $(document).on("ready", function(){
 
 function filterStudentByCohortListener(){
   var students = $("#student-by-cohort-dropdown").html();
+  var blankStudent = "<option value>Students</option>";
+  $("#student-by-cohort-dropdown").html(blankStudent);
 
   $("#cohort-dropdown").change(function(){
 
@@ -15,7 +17,7 @@ function filterStudentByCohortListener(){
   var options = $(students).filter(filterBy)
 
   if(cohortID != ""){
-     $("#student-by-cohort-dropdown").html(options).prepend("<option value>Students</option>");
+     $("#student-by-cohort-dropdown").html(options).prepend(blankStudent);
   }
 
   });

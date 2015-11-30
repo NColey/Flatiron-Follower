@@ -1,0 +1,9 @@
+<h1>Flatiron Follower</h1>
+
+<p>Hi <%= @student.name %>,</p>
+
+<p>
+Welcome to Flatiron Follower! Click on the link below to activate your account:
+</p>
+
+<%= link_to "Activate My Account", edit_account_activation_url(@student.activation_token, email: @student.email) %>

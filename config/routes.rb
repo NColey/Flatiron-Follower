@@ -36,6 +36,11 @@ Rails.application.routes.draw do
   post '/cohorts/:id/scrape' => 'cohorts#scrape', as: :scrape_cohort
   resources :cohorts
 
+  #admin
+  namespace :admin do 
+    resources :students, :cohorts
+  end
+
 
 
 

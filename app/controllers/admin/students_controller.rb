@@ -6,7 +6,8 @@ class Admin::StudentsController < ApplicationController
 
   def create
     @student = Student.new(student_params)
-    @student.save
+    @student.save(validate: false)
+    redirect_to cohort_path(@student.cohort)
   end
 
   def edit

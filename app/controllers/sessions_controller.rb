@@ -33,8 +33,8 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy_github
-    	github_log_out
-    	redirect_to student_profile_path(@student)
-  	end 
+    github_log_out
+    redirect_to student_profile_path(current_student)
+  end 
 
 end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :students, :except => [:show, :new, :create]
   resources :welcome, :except => [:index, :create]
   resources :account_activations, only: [:edit]
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
   root to: 'welcome#index'
   post '/' => 'welcome#create'

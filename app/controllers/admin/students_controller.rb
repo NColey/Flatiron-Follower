@@ -26,5 +26,4 @@ private
     params.require(:student).permit(:name, :email, :cohort_id, :twitter_handle, :github_handle)
   end
 
-
 end

@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  before_action :logged_in?
 
 	def edit
 		@student = Student.find(params[:id])
@@ -74,5 +75,12 @@ private
 	def auth_hash
     	request.env['omniauth.auth']
   end
+
+  def logged_in?
+    if current_student.nil?
+      redirect_to login_path, :notice => "Please log in to view this page."
+    end
+  end
+
 end
 

@@ -1,0 +1,17 @@
+<%= form_for(@student, url: password_reset_path(params[:id])) do |f| %>
+	<%= hidden_field_tag :email, @student.email %>
+
+<div class="field form-group">
+  <%= f.label :password %>
+  <%= f.password_field :password, placeholder: "Password", class: 'form-control' %>
+</div>
+
+<div class="field form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, placeholder: "Password confirmation", class: 'form-control' %><br>
+</div>
+
+<div class="actions">
+  <%= f.submit "Update Password", class: 'btn btn-default' %>
+</div>
+<% end %>

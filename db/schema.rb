@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130053120) do
+ActiveRecord::Schema.define(version: 20151202061650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20151130053120) do
     t.integer  "cohort_id"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "github_handle"
     t.string   "linkedin_url"
     t.string   "twitter_handle"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20151130053120) do
     t.string   "activation_digest"
     t.boolean  "activated"
     t.datetime "activated_at"
+    t.string   "password_reset_digest"
+    t.datetime "password_reset_sent_at"
   end
 
 end

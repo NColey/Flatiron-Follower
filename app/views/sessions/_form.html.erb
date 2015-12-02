@@ -6,11 +6,12 @@
 </div>
 
 <div class="field form-group">
-  <%= f.label :password %>
+  <%= f.label :password %> 
   <%= f.password_field :password, placeholder: "Password", class: 'form-control' %>
 </div>
 
 <div class="actions">
   <%= f.submit "Log in", class: 'btn btn-default' %>
+  <%= link_to "Forgot Password?", password_reset_new_path, class: 'btn btn-default'%>
 </div>
 <% end %>

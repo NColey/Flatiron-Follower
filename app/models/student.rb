@@ -3,8 +3,8 @@ class Student < ActiveRecord::Base
 	attr_accessor :remember_token, :activation_token
 
 	#validation
-	has_secure_password
-	before_update :create_activation_digest
+	# has_secure_password
+	# before_update :create_activation_digest
 	validates :email, format: {:with => /@flatironschool.com/}#, uniqueness: {case_sensitive: false}, 
   	attr_encrypted :github, :key => :encryption_key
 

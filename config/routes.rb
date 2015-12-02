@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'password_reset/new'
+
+  get 'password_reset/edit'
+
   resources :students, :except => [:show]
   resources :welcome, :except => [:index, :create]
   resources :account_activations, only: [:edit]
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
   root to: 'welcome#index'
   post '/' => 'welcome#create'

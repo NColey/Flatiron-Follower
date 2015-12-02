@@ -22,6 +22,7 @@ class TwitterConnection
       students.each do |student|
         if student.twitter_handle != "" && student.twitter_handle != "nessiejadler"
             username = student.twitter_handle
+            binding.pry
             @client.follow(username)
         end
       end     

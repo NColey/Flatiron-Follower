@@ -1,10 +1,10 @@
 class Student < ActiveRecord::Base
 	belongs_to :cohort
-	attr_accessor :remember_token, :activation_token
+	attr_accessor :activation_token, :reset_token
 
 	#validation
-	# has_secure_password
-	# before_update :create_activation_digest
+	has_secure_password
+	before_update :create_activation_digest, :create_activation_digest
 	validates :email, format: {:with => /@flatironschool.com/}#, uniqueness: {case_sensitive: false}, 
   	attr_encrypted :github, :key => :encryption_key
 
@@ -25,6 +25,16 @@ class Student < ActiveRecord::Base
         digest = send("#{attribute}_digest")
         return false if digest.nil?
         BCrypt::Password.new(digest).is_password?(token)
+    end
+
+    def send_password_reset_email
+        StudentEmailConfirmation.password_reset(self).deliver_now
+    end
+
+    def create_password_reset_digest
+        self.reset_token = Student.new_token
+        update_attribute(:password_reset_digest, Student.digest(reset_token))
+        update_attribute(:password_reset_sent_at, Time.zone.now)
     end
 
     private

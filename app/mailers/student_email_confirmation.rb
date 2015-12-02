@@ -16,9 +16,9 @@ class StudentEmailConfirmation < ApplicationMailer
   #
   #   en.student_email_confirmation.password_reset.subject
   #
-  def password_reset
-    @greeting = "Hi"
+  def password_reset(student)
+    @student = student
 
-    mail to: "to@example.org"
+    mail to: student.email, subject: "Password Reset"
   end
 end

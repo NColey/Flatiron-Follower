@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :logged_in?
+  before_action :logged_in?, only: [:index, :show]
 
 	def edit
 		@student = Student.find(params[:id])

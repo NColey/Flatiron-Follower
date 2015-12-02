@@ -9,8 +9,8 @@
   <tbody>
   <% @cohorts.each do |cohort| %>
     <tr>
-      <td><%= link_to cohort.name, cohort_path(cohort) %></td>
-      <td><%= link_to "Edit", edit_cohort_path(cohort) %> </td>
+      <td><%= link_to cohort.name, admin_cohort_path(cohort) %></td>
+      <td><%= link_to "Edit", edit_admin_cohort_path(cohort) %> </td>
       <td><a href="<%= cohort.url %>" target="_blank">View on Web</a></td>
     </tr>
     <% end %>

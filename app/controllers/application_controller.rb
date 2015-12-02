@@ -5,4 +5,12 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
+private
+
+  def authorized?
+    if !(logged_in? && current_student.try(:admin?))
+      redirect_to login_path, :notice => "Sorry, you don't have access to this page."
+    end
+  end  
+
 end

@@ -1,4 +1,4 @@
-<%= form_for @cohort do |f| %>
+<%= form_for [:admin, @cohort] do |f| %>
   <div class="field form-group">
     <p><%= f.label :name %></p>
     <p><%= f.text_field :name, placeholder: "Cohort Name", class: "form-control" %></p>

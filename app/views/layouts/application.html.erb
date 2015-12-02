@@ -14,7 +14,7 @@
   <div class="container">
   	<%= render '/layouts/flash_messages' %>
   	
-    <%= content_for?(:cohorts) ? yield(:cohorts) : yield %>
+    <%= yield %>
   </div>
   <br>
   <br>

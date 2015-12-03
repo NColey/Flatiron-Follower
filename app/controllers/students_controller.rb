@@ -19,9 +19,9 @@ class StudentsController < ApplicationController
 			end
 		else
 			if !current_student
-				flash.now[:alert] = "Sorry, we could not sign you up!"
+				flash[:alert] = "Sorry, we could not sign you up!"
 			else
-				flash.now[:alert] = "Sorry, we could not edit your information!"
+				flash[:alert] = "Sorry, we could not edit your information!"
 			end
 		  	render "edit"
 		end

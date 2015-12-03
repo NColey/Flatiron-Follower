@@ -39,7 +39,8 @@ class TwitterConnection
       students = Student.where(cohort_id: cohort_id) 
       students.each do |student|
         if student.twitter_handle != "" && student.twitter_handle != "nessiejadler"
-            @client.unfollow(username)
+          username = student.twitter_handle
+          @client.unfollow(username)
         end
       end     
   end

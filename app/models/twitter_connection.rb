@@ -21,16 +21,18 @@ class TwitterConnection
     @client.follow(username)
   end
 
-  #Twitter::Error::Forbidden: You've already requested to follow dodgerredhead.
-  #Twitter::Error::NotFound: No user matches for specified terms. #yifan
-  #Twitter::Error::TooManyRequests: Rate limit exceeded
-
   def follow(cohort_id)
       students = Student.where(cohort_id: cohort_id)
       students.each do |student|
         if student.twitter_handle != "" && student.twitter_handle != "nessiejadler"
             username = student.twitter_handle
-            @client.follow(username)
+            begin
+              @client.follow(username)
+            rescue #Twitter::Error::TooManyRequests
+              # flash[:alert] = "The API rate limit has been exceeded. Wait 15 minutes and try again"
+            # rescue Twitter::Error
+              # flash[:alert] = "Some of your classmates have suspended or protected accounts. You have unfollowed everyone else."
+            end
         end
       end     
   end
@@ -40,7 +42,10 @@ class TwitterConnection
       students.each do |student|
         if student.twitter_handle != "" && student.twitter_handle != "nessiejadler"
           username = student.twitter_handle
-          @client.unfollow(username)
+          begin
+            @client.unfollow(username)
+          rescue
+          end
         end
       end     
   end

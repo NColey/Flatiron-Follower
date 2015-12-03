@@ -11,11 +11,11 @@ class SessionsController < ApplicationController
 			    log_in(student)
 			    redirect_to student_profile_path(student)
 			else
-				flash.now[:alert] = "Account not activated."
+				flash[:alert] = "Account not activated."
 				redirect_to root_url
 			end
 		else
-		  flash.now.alert = "Sorry, that's an invalid email/password combination!"
+		  flash.alert = "Sorry, that's an invalid email/password combination!"
 		  render "new"
 		end
 	end

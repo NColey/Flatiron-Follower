@@ -11,10 +11,10 @@ class PasswordResetsController < ApplicationController
   	if @student
   		@student.create_password_reset_digest
   		@student.send_password_reset_email
-  		flash.now[:alert] = "Check your email for instrcutions to reset your password"
+  		flash[:alert] = "Check your email for instrcutions to reset your password"
   		redirect_to login_path
   	else
-  		flash.now[:alert] = "Email address not found"
+  		flash[:alert] = "Email address not found"
   		render 'edit'
   	end
   end
@@ -24,11 +24,11 @@ class PasswordResetsController < ApplicationController
 
   def update
     if params[:student][:password].empty?
-      flash.now[:alert] = "Password field cannot be empty."
+      flash[:alert] = "Password field cannot be empty."
       render 'edit'
     elsif @student.update_attributes(student_params)
       log_in(@student)
-      flash.now[:alert] = "Password has been reset."
+      flash[:alert] = "Password has been reset."
       redirect_to @student
     else
       render 'edit'
@@ -53,7 +53,7 @@ class PasswordResetsController < ApplicationController
 
   def check_password_digest_expiration
     if @student.password_reset_expired?
-      flash.now[:alert] = "Your password reset link has expired. Please try again."
+      flash[:alert] = "Your password reset link has expired. Please try again."
       redirect_to new_password_reset_url
     end
   end

@@ -17,12 +17,19 @@ class TwitterConnection
     end
   end
 
+  def follow_one(username)
+    @client.follow(username)
+  end
+
+  #Twitter::Error::Forbidden: You've already requested to follow dodgerredhead.
+  #Twitter::Error::NotFound: No user matches for specified terms. #yifan
+  #Twitter::Error::TooManyRequests: Rate limit exceeded
+
   def follow(cohort_id)
       students = Student.where(cohort_id: cohort_id)
       students.each do |student|
         if student.twitter_handle != "" && student.twitter_handle != "nessiejadler"
             username = student.twitter_handle
-            binding.pry
             @client.follow(username)
         end
       end     
@@ -32,7 +39,6 @@ class TwitterConnection
       students = Student.where(cohort_id: cohort_id) 
       students.each do |student|
         if student.twitter_handle != "" && student.twitter_handle != "nessiejadler"
-            username = student.twitter_handle
             @client.unfollow(username)
         end
       end     

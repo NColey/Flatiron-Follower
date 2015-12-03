@@ -2,12 +2,10 @@ class CohortsController < ApplicationController
 
 
   def follow_cohort
-    cohort_id = follow_params[:id]
-    @cohort = Cohort.find(cohort_id)
-    cohort_name = @cohort.name
+    
+    find_cohort
 
-    provider = follow_params[:provider]
-    @student = Student.find_by(id: session[:student_id])
+    find_student_and_provider
 
     if provider == 'github'
       token = @student.send(provider)
@@ -16,7 +14,7 @@ class CohortsController < ApplicationController
       twitter = TwitterConnection.new(@student)
       begin
         twitter.follow(cohort_id)
-      rescue
+      rescue Twitter::Error
         flash.now[:alert] = "Some of your classmates have suspended or protected accounts. You have followed everyone else."
       end
     end
@@ -24,9 +22,10 @@ class CohortsController < ApplicationController
   end
 
   def unfollow_cohort
-    cohort_id = follow_params[:id]
-    @cohort = Cohort.find(cohort_id)
-    cohort_name = @cohort.name
+
+    find_cohort
+
+    find_student_and_provider
 
     provider = follow_params[:provider]
     @student = Student.find_by(id: session[:student_id])
@@ -38,7 +37,7 @@ class CohortsController < ApplicationController
       twitter = TwitterConnection.new(@student)
       begin
         twitter.unfollow(cohort_id)
-      rescue
+      rescue Twitter::Error
         flash.now[:alert] = "Some of your classmates have suspended or protected accounts. You have unfollowed everyone else."
       end
     end
@@ -49,6 +48,17 @@ private
 
   def follow_params
     params.permit(:id, :provider)
+  end
+
+  def find_cohort
+    cohort_id = follow_params[:id]
+    @cohort = Cohort.find(cohort_id)
+    cohort_name = @cohort.name
+  end
+
+  def find_student_and_provider
+    provider = follow_params[:provider]
+    @student = Student.find_by(id: session[:student_id])
   end
   
 end

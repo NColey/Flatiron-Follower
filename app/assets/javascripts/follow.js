@@ -1,9 +1,11 @@
 $(document).on('page:load', function(){
+  githubFollowRequestProcessingListener();
   followAllListener();
   unfollowAllListener();
   filterStudentListener();
 });
 $(document).on("ready", function(){
+  githubFollowRequestProcessingListener();
   followAllListener();
   unfollowAllListener();
   filterStudentListener();
@@ -29,11 +31,21 @@ function unfollowAllListener(){
     })
 }
 
+function githubFollowRequestProcessingListener(){
+  $('.follow-all.btn-github').on("ajax:success", function(event, data){
+    debugger;
+  })
+}
+
 function showSuccessMessage(id, name, provider){
   $(".follow-success-"+provider+"-"+id).html("<p>Woohoo! You're now following " + name + "!</p>");
 }
 function showUnfollowSuccessMessage(id, name, provider){
   $(".follow-success-"+provider+"-"+id).html("<p>You're no longer following " + name + "!</p>");
+}
+
+function showProcessingMessage(){
+  $('.btn-github.follow-all').append("Please wait, your request is being processed...")
 }
 
 function filterStudentListener(){

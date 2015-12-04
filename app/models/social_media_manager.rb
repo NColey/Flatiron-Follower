@@ -11,7 +11,7 @@ class SocialMediaManager
   	end
 
   	def self.twitter_client(student)
-      @client ||= TwitterConnection.new(student)
+      TwitterConnection.new(student)
     end
 
     def self.github_client

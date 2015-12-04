@@ -22,17 +22,19 @@ class TwitterConnection
   end
 
   def follow(cohort_id)
-      students = Student.where(cohort_id: cohort_id)
-      students.each do |student|
-        if student.twitter_handle != "" && student.twitter_handle != "nessiejadler"
+       students = Student.where(cohort_id: cohort_id)
+       students.each do |student|
+         if student.twitter_handle != "" && student.twitter_handle != "nessiejadler"
             username = student.twitter_handle
+            @client.follow(username)
             begin
               @client.follow(username)
             rescue 
+            
             end
-        end
-      end     
-  end
+         end
+       end     
+   end
 
   def unfollow(cohort_id)
       students = Student.where(cohort_id: cohort_id) 

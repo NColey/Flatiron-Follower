@@ -28,9 +28,7 @@ class Scraper
 		#cleans out the broken links
 		students_name_array.reject do |link|
 	    link == "#{self.url}students/student_name.html" || link == "#{self.url}students/student_he.html"
-	end
-
-	  
+		end  
 	end
 
 	def scrape_student_info

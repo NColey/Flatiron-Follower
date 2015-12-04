@@ -5,7 +5,7 @@ class Student < ActiveRecord::Base
 	#validation
 	has_secure_password
 	before_update :create_activation_digest, :create_activation_digest
-	validates :email, format: {:with => /@flatironschool.com/}#, uniqueness: {case_sensitive: false}, 
+	validates :email, format: {:with => /@flatironschool.com/}
   	attr_encrypted :github, :key => :encryption_key
 
 

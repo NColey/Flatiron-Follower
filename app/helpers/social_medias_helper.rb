@@ -1,0 +1,2 @@
+module SocialMediasHelper
+end

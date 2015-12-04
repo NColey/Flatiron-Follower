@@ -28,10 +28,7 @@ class TwitterConnection
             username = student.twitter_handle
             begin
               @client.follow(username)
-            rescue #Twitter::Error::TooManyRequests
-              # flash[:alert] = "The API rate limit has been exceeded. Wait 15 minutes and try again"
-            # rescue Twitter::Error
-              # flash[:alert] = "Some of your classmates have suspended or protected accounts. You have unfollowed everyone else."
+            rescue 
             end
         end
       end     

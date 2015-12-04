@@ -1,4 +1,4 @@
-class SocialMediasController < ApplicationController
+class SocialMediaController < ApplicationController
 
 
   def follow_cohort

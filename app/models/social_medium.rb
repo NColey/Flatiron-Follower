@@ -1,0 +1,2 @@
+class SocialMedium
+end

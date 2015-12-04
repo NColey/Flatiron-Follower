@@ -1,7 +1,7 @@
-<%= link_to follow_cohort_path(cohort, provider), method: :put, remote: true, class: "follow-all btn btn-block btn-social btn-github" do %>
+<%= link_to follow_cohort_path(cohort, provider), method: :put, remote: true, id: "follow-button-github", class: "follow-all btn btn-block btn-social btn-github" do %>
   <span class="fa fa-github"></span> Follow all on Github
 <% end %>
-  
+
 <%= link_to unfollow_cohort_path(cohort, provider), method: :delete, remote: true, class: "unfollow-all btn btn-block btn-social btn-github" do %>
   <span class="fa fa-github"></span> Unfollow all on Github
 <% end %>

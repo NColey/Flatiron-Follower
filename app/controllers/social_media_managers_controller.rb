@@ -14,7 +14,7 @@ class SocialMediaManagersController < ApplicationController
     provider = follow_params[:provider]
     @student = Student.find_by(id: session[:student_id])
 
-    SocialMediaManager.follow_or_unfollow_cohort(provider, cohort_id, @student)
+    SocialMediaManager.follow_or_unfollow_cohort(provider, cohort_id, @student, social_media_method)
 
     render_confirmation_message(provider, cohort_id)
   end

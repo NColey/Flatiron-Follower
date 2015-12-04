@@ -12,14 +12,6 @@ class Student < ActiveRecord::Base
 	def encryption_key
 	  ENV['DECRYPT_GITHUB_OAUTH']
 	end
-  
-    def twitter_client(student)
-      @client ||= TwitterConnection.new(student)
-    end
-
-    def github_client
-      @client ||= Adapters::GithubConnection.new
-    end
 
     def authenticated?(attribute, token)
         digest = send("#{attribute}_digest")

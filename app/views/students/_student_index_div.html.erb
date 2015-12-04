@@ -5,11 +5,16 @@
       <td class='col-md-2'><i class='fa fa-envelope-o'></i></td>
       <td><a href='mailto:<% student.email %>'><%= student.email %></a></td>
     </tr>
+
     <tr>
       <td class='col-md-2'><i class='fa fa-github'></i></td>
-      <td><%= link_to student.github_handle, "https://github.com/#{student.github_handle}", :target => "_blank" %></td></tr>
-      <tr><td class='col-md-2'><i class='fa fa-twitter'></i></td>
-        <td><%= link_to student.twitter_handle, "https://twitter.com/#{student.twitter_handle}", :target =>"_blank" %></td>
+      <td><%= link_to student.github_handle, "https://github.com/#{student.github_handle}", :target => "_blank" %></td>
     </tr>
+
+    <tr>
+      <td class='col-md-2'><i class='fa fa-twitter'></i></td>
+      <td><%= link_to student.twitter_handle, "https://twitter.com/#{student.twitter_handle}", :target =>"_blank" %></td>
+    </tr>
+
   </table>
 </div>

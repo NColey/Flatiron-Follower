@@ -30,8 +30,8 @@ Rails.application.routes.draw do
   
 
   #follow/unfollow cohorts
-  put '/social_media/:id/follow/:provider' => 'social_media#follow_cohort', as: :follow_cohort
-  delete '/social_media/:id/unfollow/:provider' => 'social_media#unfollow_cohort', as: :unfollow_cohort
+  put '/social_media_managers/:id/follow/:provider' => 'social_media_managers#follow_cohort', as: :follow_cohort
+  delete '/social_media_managers/:id/unfollow/:provider' => 'social_media_managers#unfollow_cohort', as: :unfollow_cohort
 
   #cohorts crud
   post 'admin/cohorts/:id/scrape' => 'admin/cohorts#scrape', as: :scrape_cohort

@@ -23,30 +23,20 @@ class TwitterConnection
 
   def follow(cohort_id)
        students = Student.where(cohort_id: cohort_id)
-       students.each do |student|
-         if student.twitter_handle != "" && student.twitter_handle != "nessiejadler"
-            username = student.twitter_handle
-            @client.follow(username)
-            begin
-              @client.follow(username)
-            rescue 
-            
-            end
-         end
-       end     
+       handles = students.pluck(:twitter_handle).reject{|handle| handle=="" || handle=="nessiejadler"}
+       begin
+         @client.follow(handles)
+       rescue
+       end  
    end
 
   def unfollow(cohort_id)
       students = Student.where(cohort_id: cohort_id) 
-      students.each do |student|
-        if student.twitter_handle != "" && student.twitter_handle != "nessiejadler"
-          username = student.twitter_handle
-          begin
-            @client.unfollow(username)
-          rescue
-          end
-        end
-      end     
+      handles = students.pluck(:twitter_handle).reject{|handle| handle=="" || handle=="nessiejadler"}
+       begin
+         @client.unfollow(handles)
+       rescue
+       end    
   end
 
 end

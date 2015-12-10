@@ -1,13 +1,8 @@
-$(document).on('page:load', function(){
+$(document).on('page:change', function(){
   followAllListener();
   unfollowAllListener();
   filterStudentListener();
 });
-$(document).on("ready", function(){
-  followAllListener();
-  unfollowAllListener();
-  filterStudentListener();
-})
 
 $(document).ajaxStart(function() {
   $('.social-media-request').show();

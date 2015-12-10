@@ -1,9 +1,6 @@
-$(document).on('page:load', function(){
+$(document).on('page:change', function(){
   filterStudentByCohortListener();
 });
-$(document).on("ready", function(){
-  filterStudentByCohortListener();
-})
 
 function filterStudentByCohortListener(){
   var students = $("#student-by-cohort-dropdown").html();

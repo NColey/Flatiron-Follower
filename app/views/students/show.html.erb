@@ -19,6 +19,10 @@
           <td><i class="fa fa-github"></i></td>
           <td><%= current_student.github_handle %></td>
         </tr>
+        <tr>
+          <td><i class="fa fa-linkedin-square"></i></i></td>
+          <td><%= link_to "LinkedIn Profile", current_student.linkedin_url, target: "_blank" %></td>
+        </tr>
       </tbody>
     </table>
     <%= link_to "Edit Your Profile", edit_student_path(current_student) %>

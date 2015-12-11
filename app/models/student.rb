@@ -1,3 +1,30 @@
+# == Schema Information
+#
+# Table name: students
+#
+#  id                     :integer          not null, primary key
+#  name                   :string
+#  cohort_id              :integer
+#  email                  :string
+#  password_digest        :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  github_handle          :string
+#  linkedin_url           :string
+#  twitter_handle         :string
+#  encrypted_github       :string
+#  provider               :string
+#  uid                    :string
+#  token                  :string
+#  secret                 :string
+#  admin                  :boolean
+#  activation_digest      :string
+#  activated              :boolean
+#  activated_at           :datetime
+#  password_reset_digest  :string
+#  password_reset_sent_at :datetime
+#
+
 class Student < ActiveRecord::Base
 	belongs_to :cohort
 	attr_accessor :activation_token, :reset_token

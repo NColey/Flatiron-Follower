@@ -25,9 +25,10 @@ class Scraper
 			self.url + name_data['href']
 		end
 		
-		#cleans out the broken links
+		broken_links = ["#{self.url}students/student_name.html", "https://learn-co-students.github.io/deploy-on-day-1-web-1115/../students/asia_lindsay.html", "https://learn-co-students.github.io/deploy-on-day-1-web-1115/students/chris_mcmuigan.html", "https://learn-co-students.github.io/deploy-on-day-1-web-0715/students/student_he.html"]
+
 		students_name_array.reject do |link|
-	    link == "#{self.url}students/student_name.html" || link == "https://learn-co-students.github.io/deploy-on-day-1-web-1115/../students/asia_lindsay.html" || link == "https://learn-co-students.github.io/deploy-on-day-1-web-1115/students/chris_mcmuigan.html"
+			broken_links.include?(link)
 		end  
 	end
 

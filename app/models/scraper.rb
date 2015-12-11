@@ -27,7 +27,7 @@ class Scraper
 		
 		#cleans out the broken links
 		students_name_array.reject do |link|
-	    link == "#{self.url}students/student_name.html" || link == "#{self.url}students/student_he.html"
+	    link == "#{self.url}students/student_name.html" || link == "https://learn-co-students.github.io/deploy-on-day-1-web-1115/../students/asia_lindsay.html" || link == "https://learn-co-students.github.io/deploy-on-day-1-web-1115/students/chris_mcmuigan.html"
 		end  
 	end
 

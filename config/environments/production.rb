@@ -90,7 +90,19 @@ Rails.application.configure do
     domain: 'flatiron-follower.herokuapp.com',
     user_name: ENV["GMAIL_ADDRESS"],
     password: ENV["GMAIL_PASSWORD"],
-    authentication: :login,
+    authentication: 'plain',
     enable_starttls_auto: true
   }
+
+  #actionmailer with sendgrid
+
+#   config.action_mailer.smtp_settings = {
+#     :address   => "smtp.sendgrid.net",
+#     :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
+#     :enable_starttls_auto => true, # detects and uses STARTTLS
+#     :user_name => ENV["SENDGRID_USERNAME"],
+#     :password  => ENV["SENDGRID_PASSWORD"], # SMTP password is any valid API key
+#     :authentication => :login,
+#     :domain => 'flatiron-follower.herokuapp.com', # your domain to identify your server when connecting
+# }
 end

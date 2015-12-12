@@ -1,5 +1,14 @@
 $(document).on('page:change', function(){
   filterStudentByCohortListener();
+  showSubmitButton();
+});
+
+$(document).ready(function(){
+  $('.btn-default').hide();
+});
+
+$(document).on('page:load', function(){
+  $('.btn-default').hide();
 });
 
 function filterStudentByCohortListener(){
@@ -18,4 +27,12 @@ function filterStudentByCohortListener(){
   }
 
   });
+}
+
+function showSubmitButton(){
+  $("#student-by-cohort-dropdown").change(function(){
+    $('.btn-default').show();
+
+  })
+
 }

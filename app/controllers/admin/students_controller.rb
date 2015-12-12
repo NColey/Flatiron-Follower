@@ -23,7 +23,7 @@ class Admin::StudentsController < ApplicationController
 
 private 
   def student_params
-    params.require(:student).permit(:name, :email, :cohort_id, :twitter_handle, :github_handle)
+    params.require(:student).permit(:name, :email, :cohort_id, :twitter_handle, :github_handle, :linkedin_url)
   end
 
 end

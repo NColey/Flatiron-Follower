@@ -4,11 +4,11 @@ $(document).on('page:change', function(){
 });
 
 $(document).ready(function(){
-  $('.btn-default').hide();
+  $('#sign-up-button-js').hide();
 });
 
 $(document).on('page:load', function(){
-  $('.btn-default').hide();
+  $('#sign-up-button-js').hide();
 });
 
 function filterStudentByCohortListener(){
@@ -31,7 +31,7 @@ function filterStudentByCohortListener(){
 
 function showSubmitButton(){
   $("#student-by-cohort-dropdown").change(function(){
-    $('.btn-default').show();
+    $('#sign-up-button-js').show();
 
   })
 

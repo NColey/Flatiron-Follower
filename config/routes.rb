@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get 'students/filter' => 'students#student_filter'
   get 'students/:id' => 'students#show', as: :student_profile
 
+  #wisdom
+  get '/jeffquotes' => 'students#jeff_quotes', as: :jeff_quotes
+
 
   #log in with twitter
   get '/login/twitter', to: redirect('/auth/twitter'), as: :twitter_login

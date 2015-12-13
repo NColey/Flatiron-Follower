@@ -66,6 +66,10 @@ class StudentsController < ApplicationController
 		redirect_to student_profile_path(@student)
 	end
 
+	def jeff_quotes
+		
+	end
+
 	private
 
 	def student_params

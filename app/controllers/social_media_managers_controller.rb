@@ -14,12 +14,17 @@ class SocialMediaManagersController < ApplicationController
     provider = follow_params[:provider]
     @student = Student.find_by(id: session[:student_id])
 
-    SocialMediaManager.follow_or_unfollow_cohort(provider, cohort_id, @student, social_media_method)
-    
+    add_to_queue_and_attempt_request(provider, cohort_id, @student, social_media_method)
+
     render_confirmation_message(provider, cohort_id)
   end
 
   private 
+
+  def add_to_queue_and_attempt_request(provider, cohort_id, student, social_media_method)
+    twitter_queue = TwitterQueue.create(social_media_method: social_media_method, provider: provider, student_id: student.id, cohort_id: cohort_id.to_i)
+    twitter_queue.try_social_media_request
+  end
 
   def follow_params
     params.permit(:id, :provider)

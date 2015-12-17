@@ -28,7 +28,7 @@ class TwitterConnection
          @client.follow(handles)
        rescue
        end  
-   end
+  end
 
   def unfollow(cohort_id)
       students = Student.where(cohort_id: cohort_id) 

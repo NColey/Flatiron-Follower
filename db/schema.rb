@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202061650) do
+ActiveRecord::Schema.define(version: 20151217052034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,16 @@ ActiveRecord::Schema.define(version: 20151202061650) do
     t.datetime "activated_at"
     t.string   "password_reset_digest"
     t.datetime "password_reset_sent_at"
+  end
+
+  create_table "twitter_queues", force: :cascade do |t|
+    t.integer  "twitter_api_limit"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "social_media_method"
+    t.string   "provider"
+    t.integer  "student_id"
+    t.integer  "cohort_id"
   end
 
 end
